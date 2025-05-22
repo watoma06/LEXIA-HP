@@ -1,0 +1,335 @@
+/* nasu.design風ミニマリストスタイルのための大幅な更新 */
+:root {
+    --font-primary: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; /* 基本フォント */
+    --font-heading: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; /* 見出し用フォント (同じでも良いし、変えても良い) */
+    --color-text: #333333;       /* 基本の文字色 (濃いグレー) */
+    --color-background: #ffffff; /* 背景色 (白) */
+    --color-border: #eeeeee;     /* 境界線の色 (薄いグレー) */
+    --color-accent: #0a0a0a;     /* アクセントカラー (黒に近い色、または使わない) */
+    --container-width: 1200px;   /* コンテンツの最大幅 */
+    --spacing-unit: 10px;        /* 余白の基本単位 */
+}
+
+body {
+    font-family: var(--font-primary);
+    margin: 0;
+    padding: 0;
+    line-height: 1.7; /* 行間を少し広めに */
+    background-color: var(--color-background);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased; /* フォントを滑らかに */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding-left: var(--spacing-unit);
+    padding-right: var(--spacing-unit);
+}
+
+header {
+    padding: calc(var(--spacing-unit) * 1.5) 0; /* 上下余白を多めに */
+    border-bottom: 1px solid var(--color-border);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo { /* ロゴ画像 */
+    height: 40px; /* ロゴの高さに合わせて調整 */
+    width: auto;
+    display: block; /* 余計な余白を防ぐ */
+}
+
+header h1 { /* ロゴがテキストの場合のスタイル (今回は画像想定) */
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.5em; /* 少し控えめに */
+    font-weight: bold;
+    color: var(--color-text);
+}
+header h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+header nav ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    display: flex; /* 横並び */
+}
+
+header nav ul li {
+    margin-left: calc(var(--spacing-unit) * 1.5);
+}
+
+header nav ul li a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.9em; /* 少し小さめ、繊細に */
+    font-weight: 500; /* 少し太めに */
+    letter-spacing: 0.5px; /* 文字間隔 */
+    transition: color 0.2s ease-in-out;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+    color: var(--color-accent); /* ホバー時/アクティブ時はアクセントカラー */
+    /* text-decoration: underline; 下線は好みに応じて */
+}
+
+/* スクロールテキストアニメーション */
+.scrolling-text-container {
+    overflow: hidden; /* はみ出したテキストを隠す */
+    background-color: var(--color-accent); /* 背景色 */
+    color: var(--color-background); /* テキストの色 */
+    padding: calc(var(--spacing-unit) * 0.5) 0; /* 上下の余白 */
+    white-space: nowrap; /* テキストを折り返さない */
+}
+
+.scrolling-text {
+    display: inline-block; /* アニメーションのためにインラインブロック要素にする */
+    padding-left: 100%; /* 右から左へ流れるように初期位置を調整 */
+    animation: scroll-left 30s linear infinite; /* アニメーションの定義 (20s から 30s に変更) */
+    font-size: 2em; /* フォントサイズを大きくしました */
+    font-weight: bold; /* フォントの太さ */
+}
+
+.scrolling-text span {
+    margin-right: calc(var(--spacing-unit) * 3); /* 各テキスト間の余白 */
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%); /* 左へ100%移動 */
+    }
+}
+
+/* トップページのヒーローセクション */
+.hero-section {
+    background-color: #f0f0f0; /* 仮の背景色。画像やグラデーションに変更可能 */
+    padding: calc(var(--spacing-unit) * 4) 0 calc(var(--spacing-unit) * 5) 0;
+    text-align: center;
+}
+
+.hero-section .container {
+    max-width: 800px; /* テキストが広がりすぎないように */
+}
+
+.hero-section h1 {
+    font-size: 3.2em; /* より大きく、インパクトを */
+    font-weight: 700;
+    color: var(--color-text); /* またはテーマに合わせた色 */
+    margin-bottom: calc(var(--spacing-unit) * 0.75);
+    line-height: 1.2;
+}
+
+.hero-section .subtitle {
+    font-size: 1.4em;
+    color: #555555;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    line-height: 1.6;
+}
+
+.hero-section .button {
+    margin: calc(var(--spacing-unit) / 2);
+    padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 2); /* 少し大きめに */
+    font-size: 1.1em;
+}
+
+.hero-section .button-secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+}
+
+.hero-section .button-secondary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+}
+
+main {
+    padding-top: calc(var(--spacing-unit) * 3); /* メインコンテンツの上下余白をたっぷり */
+    padding-bottom: calc(var(--spacing-unit) * 3);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600; /* 見出しは少し太めに */
+    color: var(--color-text); /* 基本はテキストカラーと同じか少し濃く */
+    margin-top: calc(var(--spacing-unit) * 2);
+    margin-bottom: var(--spacing-unit);
+    line-height: 1.3;
+}
+
+h1 { font-size: 2.8em; } /* トップレベルの見出し */
+h2 { font-size: 2.2em; } /* セクションタイトルなど */
+h3 { font-size: 1.6em; }
+
+p {
+    margin-bottom: var(--spacing-unit);
+    font-size: 1em; /* 基本の文字サイズ */
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    /* color: darken(var(--color-accent), 10%); */ /* ホバー時少し色を変えるなど */
+    text-decoration: underline;
+}
+
+
+/* フォームスタイル (ミニマルに) */
+form div {
+    margin-bottom: var(--spacing-unit);
+}
+
+form label {
+    display: block;
+    margin-bottom: calc(var(--spacing-unit) / 3);
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"], /* telタイプも追加 */
+form textarea,
+form select {
+    width: 100%;
+    padding: calc(var(--spacing-unit) / 1.5);
+    border: 1px solid var(--color-border);
+    border-radius: 3px; /* 角丸は控えめに */
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+    font-size: 0.95em;
+    background-color: #f9f9f9; /* 少し背景色をつけるか、白のままか */
+}
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1); /* フォーカス時の表現 */
+}
+
+
+form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+form button[type="submit"],
+.button { /* 汎用ボタンクラス */
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    padding: calc(var(--spacing-unit) / 1.2) calc(var(--spacing-unit) * 1.5);
+    border: 1px solid var(--color-accent);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    text-decoration: none; /* aタグをボタンとして使う場合 */
+    display: inline-block;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    letter-spacing: 0.5px;
+}
+
+form button[type="submit"]:hover,
+.button:hover {
+    background-color: var(--color-background);
+    color: var(--color-accent);
+}
+
+footer {
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 2) 0;
+    background: #fdfdfd; /* フッターの背景色を限りなく白に近いグレーに */
+    border-top: 1px solid var(--color-border);
+    margin-top: calc(var(--spacing-unit) * 3);
+    font-size: 0.85em;
+    color: #777777; /* 少し薄めのグレー */
+}
+
+/* ポートフォリオ用スタイル (ミニマルに) */
+.portfolio-filters {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    text-align: center;
+}
+
+.portfolio-filters button {
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    padding: calc(var(--spacing-unit) / 2) var(--spacing-unit);
+    margin: 0 calc(var(--spacing-unit) / 4);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.portfolio-filters button:hover,
+.portfolio-filters button.active {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    border-color: var(--color-accent);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* アイテムの最小幅調整 */
+    gap: calc(var(--spacing-unit) * 1.5); /* グリッド間の余白 */
+}
+
+.portfolio-item {
+    border: 1px solid var(--color-border);
+    /* padding: var(--spacing-unit); 余白は画像とテキストで調整 */
+    border-radius: 3px;
+    text-align: left; /* テキストは左寄せ */
+    background-color: var(--color-background);
+    transition: box-shadow 0.2s ease-in-out;
+}
+.portfolio-item:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* ホバー時に少し影 */
+}
+
+.portfolio-item img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* 画像下の余白消し */
+    margin-bottom: var(--spacing-unit);
+    /* border-radius: 3px 3px 0 0; 画像だけ角丸にする場合 */
+}
+.portfolio-item-content {
+    padding: 0 var(--spacing-unit) var(--spacing-unit) var(--spacing-unit);
+}
+
+.portfolio-item h3 {
+    font-size: 1.2em; /* 実績タイトル */
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) / 3);
+}
+
+.portfolio-item p {
+    font-size: 0.9em; /* 実績の説明 */
+    color: #666666;
+    margin-bottom: 0;
+}
+
