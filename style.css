@@ -1,11 +1,11 @@
 /* nasu.design風ミニマリストスタイルのための大幅な更新 */
 :root {
     --font-primary: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; /* 基本フォント */
-    --font-heading: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; /* 見出し用フォント (同じでも良いし、変えても良い) */
-    --color-text: #333333;       /* 基本の文字色 (濃いグレー) */
+    --font-heading: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; /* 見出し用フォント */
+    --color-text: #000000;       /* 基本の文字色 (黒) */
     --color-background: #ffffff; /* 背景色 (白) */
     --color-border: #eeeeee;     /* 境界線の色 (薄いグレー) */
-    --color-accent: #0a0a0a;     /* アクセントカラー (黒に近い色、または使わない) */
+    --color-accent: #FF6B00;     /* アクセントカラー (オレンジ) */
     --container-width: 1200px;   /* コンテンツの最大幅 */
     --spacing-unit: 10px;        /* 余白の基本単位 */
 }
@@ -19,6 +19,7 @@ body {
     color: var(--color-text);
     -webkit-font-smoothing: antialiased; /* フォントを滑らかに */
     -moz-osx-font-smoothing: grayscale;
+    font-weight: 400; /* 本文フォントの太さを中ウェイトに */
 }
 
 .container {
@@ -81,17 +82,120 @@ header nav ul li a {
 
 header nav ul li a:hover,
 header nav ul li a.active {
-    color: var(--color-accent); /* ホバー時/アクティブ時はアクセントカラー */
-    /* text-decoration: underline; 下線は好みに応じて */
+    color: var(--color-accent); /* ホバー/アクティブ時はアクセントカラー */
+    text-decoration: none; /* 下線を消してカスタムエフェクトに備える */
+    position: relative; /* カスタム下線のため */
+}
+
+header nav ul li a:hover::after,
+header nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* テキストからの距離 */
+    width: 100%;
+    height: 2px; /* 下線の太さ */
+    background-color: var(--color-accent);
+}
+
+/* ハンバーガーメニュー */
+.hamburger-menu {
+    display: none; /* デスクトップでは非表示 */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* ナビゲーションより手前に */
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text);
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* フルスクリーンナビゲーション */
+.fullscreen-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.98); /* 少し透明度のある白 */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.fullscreen-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.fullscreen-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.fullscreen-nav ul li {
+    margin: 20px 0;
+}
+
+.fullscreen-nav ul li a {
+    font-size: 2em;
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.fullscreen-nav ul li a:hover {
+    color: var(--color-accent);
+}
+
+/* モバイル表示用のスタイル */
+@media (max-width: 768px) {
+    header nav {
+        display: none; /* 通常のナビゲーションを隠す */
+    }
+
+    .hamburger-menu {
+        display: block; /* ハンバーガーメニューを表示 */
+    }
+
+    /* ハンバーガーメニューのアクティブ状態 (X印) */
+    .hamburger-menu.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
 }
 
 /* スクロールテキストアニメーション */
 .scrolling-text-container {
     overflow: hidden; /* はみ出したテキストを隠す */
-    background-color: var(--color-accent); /* 背景色 */
-    color: var(--color-background); /* テキストの色 */
+    background-color: var(--color-background); /* 背景を白に */
+    color: var(--color-text); /* テキストを黒に */
     padding: calc(var(--spacing-unit) * 0.5) 0; /* 上下の余白 */
     white-space: nowrap; /* テキストを折り返さない */
+    border-top: 1px solid var(--color-border); /* 上下の境界線を追加して区切りを明確に */
+    border-bottom: 1px solid var(--color-border);
 }
 
 .scrolling-text {
@@ -117,9 +221,10 @@ header nav ul li a.active {
 
 /* トップページのヒーローセクション */
 .hero-section {
-    background-color: #f0f0f0; /* 仮の背景色。画像やグラデーションに変更可能 */
+    background-color: var(--color-background); /* 背景を白に */
     padding: calc(var(--spacing-unit) * 4) 0 calc(var(--spacing-unit) * 5) 0;
     text-align: center;
+    border-bottom: 1px solid var(--color-border); /* 他セクションとの区切り */
 }
 
 .hero-section .container {
@@ -129,14 +234,14 @@ header nav ul li a.active {
 .hero-section h1 {
     font-size: 3.2em; /* より大きく、インパクトを */
     font-weight: 700;
-    color: var(--color-text); /* またはテーマに合わせた色 */
+    color: var(--color-text); /* 黒 */
     margin-bottom: calc(var(--spacing-unit) * 0.75);
     line-height: 1.2;
 }
 
 .hero-section .subtitle {
     font-size: 1.4em;
-    color: #555555;
+    color: var(--color-text); /* 黒 */
     margin-bottom: calc(var(--spacing-unit) * 2);
     line-height: 1.6;
 }
@@ -145,17 +250,25 @@ header nav ul li a.active {
     margin: calc(var(--spacing-unit) / 2);
     padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 2); /* 少し大きめに */
     font-size: 1.1em;
+    background-color: var(--color-accent); /* ボタン背景をアクセントカラーに */
+    color: var(--color-background); /* ボタンテキストを白に */
+    border: 1px solid var(--color-accent); /* 枠線もアクセントカラーに */
+}
+.hero-section .button:hover {
+    background-color: var(--color-background); /* ホバー時背景を白 */
+    color: var(--color-accent); /* ホバー時テキストをアクセントカラーに */
+    border: 1px solid var(--color-accent);
 }
 
 .hero-section .button-secondary {
-    background-color: transparent;
-    color: var(--color-accent);
-    border: 2px solid var(--color-accent);
+    background-color: transparent; /* 背景透明 */
+    color: var(--color-accent); /* テキストをアクセントカラーに */
+    border: 1px solid var(--color-accent); /* 枠線をアクセントカラーに */
 }
 
 .hero-section .button-secondary:hover {
-    background-color: var(--color-accent);
-    color: var(--color-background);
+    background-color: var(--color-accent); /* ホバー時背景をアクセントカラーに */
+    color: var(--color-background); /* ホバー時テキストを白に */
 }
 
 main {
@@ -165,7 +278,7 @@ main {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    font-weight: 600; /* 見出しは少し太めに */
+    font-weight: 700; /* 見出しは太めに */
     color: var(--color-text); /* 基本はテキストカラーと同じか少し濃く */
     margin-top: calc(var(--spacing-unit) * 2);
     margin-bottom: var(--spacing-unit);
@@ -179,17 +292,30 @@ h3 { font-size: 1.6em; }
 p {
     margin-bottom: var(--spacing-unit);
     font-size: 1em; /* 基本の文字サイズ */
+    color: var(--color-text); /* 黒 */
+    font-weight: 400; /* 本文フォントの太さを中ウェイトに */
 }
 
 a {
-    color: var(--color-accent);
-    text-decoration: none;
+    color: var(--color-text); /* リンクも黒 */
+    text-decoration: underline; /* 下線でリンクとわかるように */
     transition: color 0.2s ease-in-out;
 }
 
 a:hover {
-    /* color: darken(var(--color-accent), 10%); */ /* ホバー時少し色を変えるなど */
-    text-decoration: underline;
+    color: var(--color-accent); /* ホバー時はアクセントカラー */
+    text-decoration: none; /* 下線を消してカスタムエフェクトに備える */
+    position: relative; /* カスタム下線のため */
+}
+
+a:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* テキストからの距離を調整 */
+    width: 100%;
+    height: 1.5px; /* 下線の太さを調整 */
+    background-color: var(--color-accent);
 }
 
 
@@ -212,12 +338,13 @@ form textarea,
 form select {
     width: 100%;
     padding: calc(var(--spacing-unit) / 1.5);
-    border: 1px solid var(--color-border);
-    border-radius: 3px; /* 角丸は控えめに */
+    border: 1px solid var(--color-text); /* 枠線を黒に */
+    border-radius: 0; /* 角丸なし */
     box-sizing: border-box;
     font-family: var(--font-primary);
     font-size: 0.95em;
-    background-color: #f9f9f9; /* 少し背景色をつけるか、白のままか */
+    background-color: var(--color-background); /* 背景を白に */
+    color: var(--color-text); /* 入力テキストも黒 */
 }
 form input[type="text"]:focus,
 form input[type="email"]:focus,
@@ -225,8 +352,8 @@ form input[type="tel"]:focus,
 form textarea:focus,
 form select:focus {
     outline: none;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 2px rgba(0,0,0,0.1); /* フォーカス時の表現 */
+    border-color: var(--color-text); /* フォーカス時も黒 */
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.2); /* フォーカス時の表現を少し調整 */
 }
 
 
@@ -237,11 +364,11 @@ form textarea {
 
 form button[type="submit"],
 .button { /* 汎用ボタンクラス */
-    background-color: var(--color-accent);
-    color: var(--color-background);
+    background-color: var(--color-accent); /* 背景をアクセントカラーに */
+    color: var(--color-background); /* テキスト白 */
     padding: calc(var(--spacing-unit) / 1.2) calc(var(--spacing-unit) * 1.5);
-    border: 1px solid var(--color-accent);
-    border-radius: 3px;
+    border: 1px solid var(--color-accent); /* 枠線をアクセントカラーに */
+    border-radius: 0; /* 角丸なし */
     cursor: pointer;
     font-size: 0.95em;
     font-weight: 500;
@@ -253,18 +380,19 @@ form button[type="submit"],
 
 form button[type="submit"]:hover,
 .button:hover {
-    background-color: var(--color-background);
-    color: var(--color-accent);
+    background-color: var(--color-background); /* 背景白 */
+    color: var(--color-accent); /* テキストをアクセントカラーに */
+    border: 1px solid var(--color-accent); /* 枠線をアクセントカラーに */
 }
 
 footer {
     text-align: center;
     padding: calc(var(--spacing-unit) * 2) 0;
-    background: #fdfdfd; /* フッターの背景色を限りなく白に近いグレーに */
+    background: var(--color-background); /* 背景白 */
     border-top: 1px solid var(--color-border);
     margin-top: calc(var(--spacing-unit) * 3);
     font-size: 0.85em;
-    color: #777777; /* 少し薄めのグレー */
+    color: var(--color-text); /* フッターテキストも黒 */
 }
 
 /* ポートフォリオ用スタイル (ミニマルに) */
@@ -275,11 +403,11 @@ footer {
 
 .portfolio-filters button {
     background-color: transparent;
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
+    border: 1px solid var(--color-text); /* 枠線黒 */
+    color: var(--color-text); /* テキスト黒 */
     padding: calc(var(--spacing-unit) / 2) var(--spacing-unit);
     margin: 0 calc(var(--spacing-unit) / 4);
-    border-radius: 3px;
+    border-radius: 0; /* 角丸なし */
     cursor: pointer;
     font-size: 0.9em;
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
@@ -287,9 +415,9 @@ footer {
 
 .portfolio-filters button:hover,
 .portfolio-filters button.active {
-    background-color: var(--color-accent);
-    color: var(--color-background);
-    border-color: var(--color-accent);
+    background-color: var(--color-accent); /* 背景をアクセントカラーに */
+    color: var(--color-background); /* テキスト白 */
+    border-color: var(--color-accent); /* 枠線をアクセントカラーに */
 }
 
 .portfolio-grid {
@@ -299,15 +427,15 @@ footer {
 }
 
 .portfolio-item {
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-text); /* 枠線黒 */
     /* padding: var(--spacing-unit); 余白は画像とテキストで調整 */
-    border-radius: 3px;
+    border-radius: 0; /* 角丸なし */
     text-align: left; /* テキストは左寄せ */
     background-color: var(--color-background);
     transition: box-shadow 0.2s ease-in-out;
 }
 .portfolio-item:hover {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* ホバー時に少し影 */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* ホバー時の影を少し濃く */
 }
 
 .portfolio-item img {
@@ -315,7 +443,7 @@ footer {
     height: auto;
     display: block; /* 画像下の余白消し */
     margin-bottom: var(--spacing-unit);
-    /* border-radius: 3px 3px 0 0; 画像だけ角丸にする場合 */
+    /* border-radius: 0; 画像の角丸もなし */
 }
 .portfolio-item-content {
     padding: 0 var(--spacing-unit) var(--spacing-unit) var(--spacing-unit);
@@ -329,7 +457,22 @@ footer {
 
 .portfolio-item p {
     font-size: 0.9em; /* 実績の説明 */
-    color: #666666;
+    color: var(--color-text); /* 黒 */
     margin-bottom: 0;
+}
+
+/* キャッチコピー用のスタイル */
+.catchphrase {
+    font-size: 1.2em;
+    color: var(--color-text); /* 黒 */
+    margin-top: calc(var(--spacing-unit) * 1);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    font-style: italic; /* 少しデザイン性を持たせる */
+}
+
+.catchphrase-footer {
+    font-size: 1em;
+    color: var(--color-text); /* 黒 */
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
 }
 
