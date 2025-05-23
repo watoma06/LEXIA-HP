@@ -1,7 +1,10 @@
 /* nasu.design風ミニマリストスタイルのための大幅な更新 */
+/* Google Fontsの読み込み */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+
 :root {
-    --font-primary: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; /* 基本フォント */
-    --font-heading: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; /* 見出し用フォント */
+    --font-primary: 'Noto Sans JP', sans-serif; /* 基本フォント（日本語が美しく、サンセリフで読みやすい） */
+    --font-heading: 'Montserrat', sans-serif; /* 見出し用フォント（太字・大きめ・英語サイト風の印象） */
     --color-text: #000000;       /* 基本の文字色 (黒) */
     --color-background: #ffffff; /* 背景色 (白) */
     --color-border: #eeeeee;     /* 境界線の色 (薄いグレー) */
@@ -72,6 +75,7 @@ header nav ul li {
 }
 
 header nav ul li a {
+    font-family: var(--font-primary); /* Noto Sans JP */
     color: var(--color-text);
     text-decoration: none;
     font-size: 0.9em; /* 少し小さめ、繊細に */
@@ -277,19 +281,21 @@ main {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+    font-family: var(--font-heading); /* Montserrat（太字・大きめ・英語サイト風の印象） */
     font-weight: 700; /* 見出しは太めに */
     color: var(--color-text); /* 基本はテキストカラーと同じか少し濃く */
     margin-top: calc(var(--spacing-unit) * 2);
     margin-bottom: var(--spacing-unit);
     line-height: 1.3;
+    letter-spacing: 0.02em; /* 文字間隔を少し広く */
 }
 
 h1 { font-size: 2.8em; } /* トップレベルの見出し */
 h2 { font-size: 2.2em; } /* セクションタイトルなど */
 h3 { font-size: 1.6em; }
 
-p {
+p, li, span {
+    font-family: var(--font-primary); /* Noto Sans JP（日本語が美しく、サンセリフで読みやすい） */
     margin-bottom: var(--spacing-unit);
     font-size: 1em; /* 基本の文字サイズ */
     color: var(--color-text); /* 黒 */
@@ -341,7 +347,7 @@ form select {
     border: 1px solid var(--color-text); /* 枠線を黒に */
     border-radius: 0; /* 角丸なし */
     box-sizing: border-box;
-    font-family: var(--font-primary);
+    font-family: var(--font-primary); /* Noto Sans JP */
     font-size: 0.95em;
     background-color: var(--color-background); /* 背景を白に */
     color: var(--color-text); /* 入力テキストも黒 */
@@ -364,6 +370,7 @@ form textarea {
 
 form button[type="submit"],
 .button { /* 汎用ボタンクラス */
+    font-family: var(--font-primary); /* Noto Sans JP */
     background-color: var(--color-accent); /* 背景をアクセントカラーに */
     color: var(--color-background); /* テキスト白 */
     padding: calc(var(--spacing-unit) / 1.2) calc(var(--spacing-unit) * 1.5);
