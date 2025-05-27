@@ -329,6 +329,8 @@ a:hover::after {
 
 .hero__container {
     max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
 .hero__title {
@@ -1082,7 +1084,7 @@ a:hover::after {
   align-items: center;
   gap: var(--spacing-sm);
   box-shadow: var(--box-shadow);
-  transition: all var(--transition-speed) ease;
+  transition: background var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
   transform: translateY(100px);
   opacity: 0;
   z-index: 1000;
@@ -1095,7 +1097,6 @@ a:hover::after {
 
 .floating-contact-btn:hover {
   background: var(--color-primary);
-  transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
