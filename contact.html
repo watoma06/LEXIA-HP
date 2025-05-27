@@ -30,66 +30,66 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-optimized.css">
 </head>
 <body>
     <!-- Skip to content リンク -->
     <a href="#main-content" class="skip-to-content">メインコンテンツへスキップ</a>
     
-    <header>
-        <div class="container">
-            <h1>LEXIA</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">トップ</a></li>
-                    <li><a href="about.html">会社概要</a></li>
-                    <li><a href="services.html">サービス</a></li>
-                    <li><a href="portfolio.html">制作実績</a></li>
-                    <li><a href="contact.html" class="active" aria-current="page">お問い合わせ</a></li>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__title">LEXIA</h1>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">トップ</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">会社概要</a></li>
+                    <li class="nav__item"><a href="services.html" class="nav__link">サービス</a></li>
+                    <li class="nav__item"><a href="portfolio.html" class="nav__link">制作実績</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link nav__link--active" aria-current="page">お問い合わせ</a></li>
                 </ul>
             </nav>
-            <button class="hamburger-menu" aria-label="メニューを開く" aria-expanded="false" aria-controls="fullscreen-nav">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="fullscreen-nav">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
             </button>
         </div>
     </header>
     <div class="fullscreen-nav" id="fullscreen-nav" aria-hidden="true">
-        <ul>
-            <li><a href="index.html">トップ</a></li>
-            <li><a href="about.html">会社概要</a></li>
-            <li><a href="services.html">サービス</a></li>
-            <li><a href="portfolio.html">制作実績</a></li>
-            <li><a href="contact.html">お問い合わせ</a></li>
+        <ul class="fullscreen-nav__list">
+            <li class="fullscreen-nav__item"><a href="index.html" class="fullscreen-nav__link">トップ</a></li>
+            <li class="fullscreen-nav__item"><a href="about.html" class="fullscreen-nav__link">会社概要</a></li>
+            <li class="fullscreen-nav__item"><a href="services.html" class="fullscreen-nav__link">サービス</a></li>
+            <li class="fullscreen-nav__item"><a href="portfolio.html" class="fullscreen-nav__link">制作実績</a></li>
+            <li class="fullscreen-nav__item"><a href="contact.html" class="fullscreen-nav__link">お問い合わせ</a></li>
         </ul>
     </div>
 
-    <main id="main-content">
-        <div class="container">
-            <h2>お問い合わせ & オンラインお見積もり</h2>
-            <p>ご依頼、ご相談、お見積もりのご希望など、お気軽にお問い合わせください。以下のフォームにご記入の上、送信してください。</p>
+    <main id="main-content" class="contact">
+        <div class="contact__container">
+            <h2 class="contact__title">お問い合わせ & オンラインお見積もり</h2>
+            <p class="contact__intro">ご依頼、ご相談、お見積もりのご希望など、お気軽にお問い合わせください。以下のフォームにご記入の上、送信してください。</p>
             
-            <form action="#" method="post">
-                <div>
-                    <label for="company_name">貴社名・屋号:</label>
-                    <input type="text" id="company_name" name="company_name">
+            <form action="#" method="post" class="contact-form">
+                <div class="contact-form__field">
+                    <label for="company_name" class="contact-form__label">貴社名・屋号:</label>
+                    <input type="text" id="company_name" name="company_name" class="contact-form__input">
                 </div>
-                <div>
-                    <label for="name">ご担当者様名 *:</label>
-                    <input type="text" id="name" name="name" required>
+                <div class="contact-form__field">
+                    <label for="name" class="contact-form__label">ご担当者様名 *:</label>
+                    <input type="text" id="name" name="name" class="contact-form__input" required>
                 </div>
-                <div>
-                    <label for="email">メールアドレス *:</label>
-                    <input type="email" id="email" name="email" required>
+                <div class="contact-form__field">
+                    <label for="email" class="contact-form__label">メールアドレス *:</label>
+                    <input type="email" id="email" name="email" class="contact-form__input" required>
                 </div>
-                <div>
-                    <label for="phone">お電話番号:</label>
-                    <input type="text" id="phone" name="phone">
+                <div class="contact-form__field">
+                    <label for="phone" class="contact-form__label">お電話番号:</label>
+                    <input type="text" id="phone" name="phone" class="contact-form__input">
                 </div>
-                <div>
-                    <label for="project_type">ご相談の種類 *:</label>
-                    <select id="project_type" name="project_type" required>
+                <div class="contact-form__field">
+                    <label for="project_type" class="contact-form__label">ご相談の種類 *:</label>
+                    <select id="project_type" name="project_type" class="contact-form__select" required>
                         <option value="">選択してください</option>
                         <option value="web_site_planning_design">ウェブサイト企画・設計</option>
                         <option value="web_design">ウェブデザイン</option>
@@ -99,25 +99,25 @@
                         <option value="other">その他</option>
                     </select>
                 </div>
-                <div>
-                    <label for="budget">ご予算感 (任意):</label>
-                    <input type="text" id="budget" name="budget" placeholder="例: 50万円～100万円">
+                <div class="contact-form__field">
+                    <label for="budget" class="contact-form__label">ご予算感 (任意):</label>
+                    <input type="text" id="budget" name="budget" class="contact-form__input" placeholder="例: 50万円～100万円">
                 </div>
-                <div>
-                    <label for="deadline">ご希望納期 (任意):</label>
-                    <input type="text" id="deadline" name="deadline" placeholder="例: 2025年8月末">
+                <div class="contact-form__field">
+                    <label for="deadline" class="contact-form__label">ご希望納期 (任意):</label>
+                    <input type="text" id="deadline" name="deadline" class="contact-form__input" placeholder="例: 2025年8月末">
                 </div>
-                <div>
-                    <label for="message">お問い合わせ内容・ご要望 *:</label>
-                    <textarea id="message" name="message" rows="6" required placeholder="具体的なご要望、現状の課題、参考サイトURLなどをご記入ください。"></textarea>
+                <div class="contact-form__field">
+                    <label for="message" class="contact-form__label">お問い合わせ内容・ご要望 *:</label>
+                    <textarea id="message" name="message" rows="6" class="contact-form__textarea" required placeholder="具体的なご要望、現状の課題、参考サイトURLなどをご記入ください。"></textarea>
                 </div>
-                <button type="submit">内容を確認して送信</button>
+                <button type="submit" class="contact-form__submit btn btn--primary">内容を確認して送信</button>
             </form>
         </div>
     </main>
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 LEXIA (lexia-hp.com)</p>
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__copyright">&copy; 2025 LEXIA (lexia-hp.com)</p>
         </div>
     </footer>
     <script src="script.js"></script>

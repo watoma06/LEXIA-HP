@@ -30,181 +30,181 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-optimized.css">
 </head>
 <body>
     <!-- Skip to content リンク -->
     <a href="#main-content" class="skip-to-content">メインコンテンツへスキップ</a>
     
-    <header>
-        <div class="container">
-            <h1>LEXIA</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">トップ</a></li>
-                    <li><a href="about.html">会社概要</a></li>
-                    <li><a href="services.html" class="active" aria-current="page">サービス</a></li>
-                    <li><a href="portfolio.html">制作実績</a></li>
-                    <li><a href="contact.html">お問い合わせ</a></li>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__title">LEXIA</h1>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">トップ</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">会社概要</a></li>
+                    <li class="nav__item"><a href="services.html" class="nav__link nav__link--active" aria-current="page">サービス</a></li>
+                    <li class="nav__item"><a href="portfolio.html" class="nav__link">制作実績</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">お問い合わせ</a></li>
                 </ul>
             </nav>
-            <button class="hamburger-menu" aria-label="メニューを開く" aria-expanded="false" aria-controls="fullscreen-nav">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="fullscreen-nav">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
             </button>
         </div>
     </header>
     <div class="fullscreen-nav" id="fullscreen-nav" aria-hidden="true">
-        <ul>
-            <li><a href="index.html">トップ</a></li>
-            <li><a href="about.html">会社概要</a></li>
-            <li><a href="services.html">サービス</a></li>
-            <li><a href="portfolio.html">制作実績</a></li>
-            <li><a href="contact.html">お問い合わせ</a></li>
+        <ul class="fullscreen-nav__list">
+            <li class="fullscreen-nav__item"><a href="index.html" class="fullscreen-nav__link">トップ</a></li>
+            <li class="fullscreen-nav__item"><a href="about.html" class="fullscreen-nav__link">会社概要</a></li>
+            <li class="fullscreen-nav__item"><a href="services.html" class="fullscreen-nav__link">サービス</a></li>
+            <li class="fullscreen-nav__item"><a href="portfolio.html" class="fullscreen-nav__link">制作実績</a></li>
+            <li class="fullscreen-nav__item"><a href="contact.html" class="fullscreen-nav__link">お問い合わせ</a></li>
         </ul>
     </div>
 
-    <main id="main-content">
-        <div class="container">
-            <h2>サービス一覧</h2>
-            <p>LEXIAが提供するサービス一覧です。<strong>価値をカタチに、共に語り継がれる未来へ。</strong></p>
+    <main id="main-content" class="services">
+        <div class="services__container">
+            <h2 class="services__title">サービス一覧</h2>
+            <p class="services__intro">LEXIAが提供するサービス一覧です。<strong>価値をカタチに、共に語り継がれる未来へ。</strong></p>
             
-            <div class="services-grid">
+            <div class="services__grid">
                 <div class="service-item">
-                    <h3>WEBサイト制作</h3>
-                    <div class="service-content">
-                        <h4>HTML/CSS/JSコーディング</h4>
-                        <p>レスポンシブデザイン対応の高品質なコーディングを提供。SEO対策も標準実装。</p>
-                        <ul>
-                            <li>レスポンシブデザイン対応</li>
-                            <li>SEO対策込み</li>
-                            <li>高速表示最適化</li>
-                            <li>アクセシビリティ対応</li>
+                    <h3 class="service-item__title">WEBサイト制作</h3>
+                    <div class="service-item__content">
+                        <h4 class="service-item__subtitle">HTML/CSS/JSコーディング</h4>
+                        <p class="service-item__description">レスポンシブデザイン対応の高品質なコーディングを提供。SEO対策も標準実装。</p>
+                        <ul class="service-item__features">
+                            <li class="service-item__feature">レスポンシブデザイン対応</li>
+                            <li class="service-item__feature">SEO対策込み</li>
+                            <li class="service-item__feature">高速表示最適化</li>
+                            <li class="service-item__feature">アクセシビリティ対応</li>
                         </ul>
-                        <div class="service-pricing">
-                            <p><strong>料金目安：</strong>150,000円〜300,000円</p>
-                            <p><strong>制作期間：</strong>2〜4週間</p>
+                        <div class="service-item__pricing">
+                            <p class="service-item__price"><strong>料金目安：</strong>150,000円〜300,000円</p>
+                            <p class="service-item__period"><strong>制作期間：</strong>2〜4週間</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="service-item">
-                    <h3>WEBデザイン</h3>
-                    <div class="service-content">
-                        <h4>UI/UXデザイン設計</h4>
-                        <p>ユーザビリティを重視した、美しく機能的なWEBデザインを制作します。</p>
-                        <ul>
-                            <li>ワイヤーフレーム設計</li>
-                            <li>デザインカンプ制作</li>
-                            <li>プロトタイプ作成</li>
-                            <li>ブランドガイドライン</li>
+                    <h3 class="service-item__title">WEBデザイン</h3>
+                    <div class="service-item__content">
+                        <h4 class="service-item__subtitle">UI/UXデザイン設計</h4>
+                        <p class="service-item__description">ユーザビリティを重視した、美しく機能的なWEBデザインを制作します。</p>
+                        <ul class="service-item__features">
+                            <li class="service-item__feature">ワイヤーフレーム設計</li>
+                            <li class="service-item__feature">デザインカンプ制作</li>
+                            <li class="service-item__feature">プロトタイプ作成</li>
+                            <li class="service-item__feature">ブランドガイドライン</li>
                         </ul>
-                        <div class="service-pricing">
-                            <p><strong>料金目安：</strong>80,000円〜200,000円</p>
-                            <p><strong>制作期間：</strong>1〜3週間</p>
+                        <div class="service-item__pricing">
+                            <p class="service-item__price"><strong>料金目安：</strong>80,000円〜200,000円</p>
+                            <p class="service-item__period"><strong>制作期間：</strong>1〜3週間</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="service-item">
-                    <h3>ロゴ・ブランドデザイン</h3>
-                    <div class="service-content">
-                        <h4>ブランドアイデンティティ構築</h4>
-                        <p>企業の理念と価値を視覚的に表現するロゴデザインと総合的なブランディング。</p>
-                        <ul>
-                            <li>ロゴデザイン</li>
-                            <li>名刺・パンフレットデザイン</li>
-                            <li>ブランドカラー設計</li>
-                            <li>使用ガイドライン作成</li>
+                    <h3 class="service-item__title">ロゴ・ブランドデザイン</h3>
+                    <div class="service-item__content">
+                        <h4 class="service-item__subtitle">ブランドアイデンティティ構築</h4>
+                        <p class="service-item__description">企業の理念と価値を視覚的に表現するロゴデザインと総合的なブランディング。</p>
+                        <ul class="service-item__features">
+                            <li class="service-item__feature">ロゴデザイン</li>
+                            <li class="service-item__feature">名刺・パンフレットデザイン</li>
+                            <li class="service-item__feature">ブランドカラー設計</li>
+                            <li class="service-item__feature">使用ガイドライン作成</li>
                         </ul>
-                        <div class="service-pricing">
-                            <p><strong>料金目安：</strong>50,000円〜150,000円</p>
-                            <p><strong>制作期間：</strong>1〜2週間</p>
+                        <div class="service-item__pricing">
+                            <p class="service-item__price"><strong>料金目安：</strong>50,000円〜150,000円</p>
+                            <p class="service-item__period"><strong>制作期間：</strong>1〜2週間</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="service-item">
-                    <h3>保守・運用サポート</h3>
-                    <div class="service-content">
-                        <h4>継続的なWEBサイトメンテナンス</h4>
-                        <p>サイト公開後の更新作業、セキュリティ対策、パフォーマンス改善を継続サポート。</p>
-                        <ul>
-                            <li>定期的なセキュリティ更新</li>
-                            <li>コンテンツ更新作業</li>
-                            <li>パフォーマンス監視</li>
-                            <li>技術サポート</li>
+                    <h3 class="service-item__title">保守・運用サポート</h3>
+                    <div class="service-item__content">
+                        <h4 class="service-item__subtitle">継続的なWEBサイトメンテナンス</h4>
+                        <p class="service-item__description">サイト公開後の更新作業、セキュリティ対策、パフォーマンス改善を継続サポート。</p>
+                        <ul class="service-item__features">
+                            <li class="service-item__feature">定期的なセキュリティ更新</li>
+                            <li class="service-item__feature">コンテンツ更新作業</li>
+                            <li class="service-item__feature">パフォーマンス監視</li>
+                            <li class="service-item__feature">技術サポート</li>
                         </ul>
-                        <div class="service-pricing">
-                            <p><strong>料金目安：</strong>月額10,000円〜30,000円</p>
-                            <p><strong>対応時間：</strong>平日9:00-18:00</p>
+                        <div class="service-item__pricing">
+                            <p class="service-item__price"><strong>料金目安：</strong>月額10,000円〜30,000円</p>
+                            <p class="service-item__period"><strong>対応時間：</strong>平日9:00-18:00</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="service-item">
-                    <h3>ドローン撮影</h3>
-                    <div class="service-content">
-                        <h4>空撮による魅力的な映像制作</h4>
-                        <p>企業紹介動画、不動産物件、イベント記録など、ドローンによる高品質な空撮サービス。</p>
-                        <ul>
-                            <li>4K高画質撮影</li>
-                            <li>編集・加工込み</li>
-                            <li>法規制対応済み</li>
-                            <li>各種用途に対応</li>
+                    <h3 class="service-item__title">ドローン撮影</h3>
+                    <div class="service-item__content">
+                        <h4 class="service-item__subtitle">空撮による魅力的な映像制作</h4>
+                        <p class="service-item__description">企業紹介動画、不動産物件、イベント記録など、ドローンによる高品質な空撮サービス。</p>
+                        <ul class="service-item__features">
+                            <li class="service-item__feature">4K高画質撮影</li>
+                            <li class="service-item__feature">編集・加工込み</li>
+                            <li class="service-item__feature">法規制対応済み</li>
+                            <li class="service-item__feature">各種用途に対応</li>
                         </ul>
-                        <div class="service-pricing">
-                            <p><strong>料金目安：</strong>30,000円〜80,000円</p>
-                            <p><strong>撮影時間：</strong>半日〜1日</p>
+                        <div class="service-item__pricing">
+                            <p class="service-item__price"><strong>料金目安：</strong>30,000円〜80,000円</p>
+                            <p class="service-item__period"><strong>撮影時間：</strong>半日〜1日</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="service-item">
-                    <h3>SNS運用支援</h3>
-                    <div class="service-content">
-                        <h4>効果的なSNSマーケティング</h4>
-                        <p>Instagram、Facebook、TwitterなどのSNS運用戦略立案から投稿代行まで。</p>
-                        <ul>
-                            <li>SNS戦略立案</li>
-                            <li>コンテンツ企画・制作</li>
-                            <li>投稿代行</li>
-                            <li>効果測定・改善</li>
+                    <h3 class="service-item__title">SNS運用支援</h3>
+                    <div class="service-item__content">
+                        <h4 class="service-item__subtitle">効果的なSNSマーケティング</h4>
+                        <p class="service-item__description">Instagram、Facebook、TwitterなどのSNS運用戦略立案から投稿代行まで。</p>
+                        <ul class="service-item__features">
+                            <li class="service-item__feature">SNS戦略立案</li>
+                            <li class="service-item__feature">コンテンツ企画・制作</li>
+                            <li class="service-item__feature">投稿代行</li>
+                            <li class="service-item__feature">効果測定・改善</li>
                         </ul>
-                        <div class="service-pricing">
-                            <p><strong>料金目安：</strong>月額20,000円〜50,000円</p>
-                            <p><strong>投稿頻度：</strong>週3-5回</p>
+                        <div class="service-item__pricing">
+                            <p class="service-item__price"><strong>料金目安：</strong>月額20,000円〜50,000円</p>
+                            <p class="service-item__period"><strong>投稿頻度：</strong>週3-5回</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="service-note">
-                <h3>ご利用の流れ</h3>
-                <ol>
-                    <li><strong>お問い合わせ</strong> - まずはお気軽にご相談ください</li>
-                    <li><strong>ヒアリング</strong> - ご要望や目的を詳しくお聞きします</li>
-                    <li><strong>お見積もり</strong> - 詳細な料金と制作期間をご提示</li>
-                    <li><strong>契約・制作開始</strong> - ご納得いただけましたら制作開始</li>
-                    <li><strong>納品・アフターサポート</strong> - 継続的なサポートも可能</li>
+            <div class="services__note">
+                <h3 class="services__note-title">ご利用の流れ</h3>
+                <ol class="services__flow">
+                    <li class="services__flow-item"><strong>お問い合わせ</strong> - まずはお気軽にご相談ください</li>
+                    <li class="services__flow-item"><strong>ヒアリング</strong> - ご要望や目的を詳しくお聞きします</li>
+                    <li class="services__flow-item"><strong>お見積もり</strong> - 詳細な料金と制作期間をご提示</li>
+                    <li class="services__flow-item"><strong>契約・制作開始</strong> - ご納得いただけましたら制作開始</li>
+                    <li class="services__flow-item"><strong>納品・アフターサポート</strong> - 継続的なサポートも可能</li>
                 </ol>
                 
-                <p><strong>※ 料金は案件の規模や要件により変動いたします。まずはお気軽にお見積もりをご依頼ください。</strong></p>
-                <p><strong>※ 愛知県内のお客様は直接打ち合わせも可能です。その他地域はオンライン対応となります。</strong></p>
+                <p class="services__note-text"><strong>※ 料金は案件の規模や要件により変動いたします。まずはお気軽にお見積もりをご依頼ください。</strong></p>
+                <p class="services__note-text"><strong>※ 愛知県内のお客様は直接打ち合わせも可能です。その他地域はオンライン対応となります。</strong></p>
             </div>
 
-            <div class="cta-section">
-                <h3>まずはお気軽にご相談ください</h3>
-                <p>プロジェクトの規模に関わらず、丁寧にサポートいたします。</p>
-                <a href="contact.html" class="button">お見積もり・ご相談はこちら</a>
+            <div class="services__cta">
+                <h3 class="services__cta-title">まずはお気軽にご相談ください</h3>
+                <p class="services__cta-text">プロジェクトの規模に関わらず、丁寧にサポートいたします。</p>
+                <a href="contact.html" class="btn btn--primary">お見積もり・ご相談はこちら</a>
             </div>
         </div>
     </main>
-    <footer>
-        <div class="container">
-            <p class="catchphrase-footer">価値をカタチに、共に語り継がれる未来へ</p>
-            <p>&copy; 2025 LEXIA (lexia-hp.com)</p>
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__catchphrase">価値をカタチに、共に語り継がれる未来へ</p>
+            <p class="footer__copyright">&copy; 2025 LEXIA (lexia-hp.com)</p>
         </div>
     </footer>
     <script src="script.js"></script>

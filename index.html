@@ -31,62 +31,62 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-optimized.css">
 </head>
 
 <body>
     <!-- Skip to content リンク -->
     <a href="#main-content" class="skip-to-content">メインコンテンツへスキップ</a>
     
-    <header>
-        <div class="container">
-            <h1>LEXIA</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active" aria-current="page">トップ</a></li>
-                    <li><a href="about.html">会社概要</a></li>
-                    <li><a href="services.html">サービス</a></li>
-                    <li><a href="portfolio.html">制作実績</a></li>
-                    <li><a href="contact.html">お問い合わせ</a></li>
+    <header class="header">
+        <div class="header__container container">
+            <h1 class="header__title">LEXIA</h1>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link nav__link--active" aria-current="page">トップ</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">会社概要</a></li>
+                    <li class="nav__item"><a href="services.html" class="nav__link">サービス</a></li>
+                    <li class="nav__item"><a href="portfolio.html" class="nav__link">制作実績</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">お問い合わせ</a></li>
                 </ul>
             </nav>
-            <button class="hamburger-menu" aria-label="メニューを開く" aria-expanded="false" aria-controls="fullscreen-nav">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="fullscreen-nav">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
             </button>
         </div>
     </header>
     <div class="fullscreen-nav" id="fullscreen-nav" aria-hidden="true">
-        <ul>
-            <li><a href="index.html">トップ</a></li>
-            <li><a href="about.html">会社概要</a></li>
-            <li><a href="services.html">サービス</a></li>
-            <li><a href="portfolio.html">制作実績</a></li>
-            <li><a href="contact.html">お問い合わせ</a></li>
+        <ul class="fullscreen-nav__list">
+            <li class="fullscreen-nav__item"><a href="index.html" class="fullscreen-nav__link">トップ</a></li>
+            <li class="fullscreen-nav__item"><a href="about.html" class="fullscreen-nav__link">会社概要</a></li>
+            <li class="fullscreen-nav__item"><a href="services.html" class="fullscreen-nav__link">サービス</a></li>
+            <li class="fullscreen-nav__item"><a href="portfolio.html" class="fullscreen-nav__link">制作実績</a></li>
+            <li class="fullscreen-nav__item"><a href="contact.html" class="fullscreen-nav__link">お問い合わせ</a></li>
         </ul>
     </div>
 
-    <div class="scrolling-text-container">
-        <div class="scrolling-text">
-            <span>LEXIA WEB DESIGN</span>
-            <span>LEXIA WEB DESIGN</span>
-            <span>LEXIA WEB DESIGN</span>
-            <span>LEXIA WEB DESIGN</span>
-            <span>LEXIA WEB DESIGN</span>
-            <span>LEXIA WEB DESIGN</span>
-            <span>LEXIA WEB DESIGN</span>
-            <span>LEXIA WEB DESIGN</span>
+    <div class="scrolling-text">
+        <div class="scrolling-text__content">
+            <span class="scrolling-text__item">LEXIA WEB DESIGN</span>
+            <span class="scrolling-text__item">LEXIA WEB DESIGN</span>
+            <span class="scrolling-text__item">LEXIA WEB DESIGN</span>
+            <span class="scrolling-text__item">LEXIA WEB DESIGN</span>
+            <span class="scrolling-text__item">LEXIA WEB DESIGN</span>
+            <span class="scrolling-text__item">LEXIA WEB DESIGN</span>
+            <span class="scrolling-text__item">LEXIA WEB DESIGN</span>
+            <span class="scrolling-text__item">LEXIA WEB DESIGN</span>
         </div>
     </div>
 
-    <section class="hero-section">
-        <div class="container">
-            <h1>革新的なWEBサイトで、ビジネスを加速</h1>
-            <p class="subtitle">LEXIAは、お客様の目的達成に貢献するソリューションを提供します。</p>
-            <p class="catchphrase">価値をカタチに、共に語り継がれる未来へ</p>
-            <a href="services.html" class="button">サービスを見る</a>
-            <a href="contact.html" class="button button-secondary">お問い合わせ</a>
+    <section class="hero">
+        <div class="hero__container container">
+            <h1 class="hero__title">革新的なWEBサイトで、ビジネスを加速</h1>
+            <p class="hero__subtitle">LEXIAは、お客様の目的達成に貢献するソリューションを提供します。</p>
+            <p class="hero__catchphrase">価値をカタチに、共に語り継がれる未来へ</p>
+            <a href="services.html" class="btn hero__btn">サービスを見る</a>
+            <a href="contact.html" class="btn btn--secondary hero__btn">お問い合わせ</a>
         </div>
     </section>
 
@@ -103,85 +103,85 @@
             </ul>
             <p>まずはお気軽にご相談ください。お客様のビジネスの成功を全力でサポートいたします。</p>
             
-            <section class="testimonials-section">
-                <h3>お客様の声</h3>
-                <div class="testimonials-grid">
+            <section class="testimonials">
+                <h3 class="testimonials__title">お客様の声</h3>
+                <div class="testimonials__grid">
                     <div class="testimonial-item">
-                        <div class="testimonial-content">
-                            <p>「LEXIAさんにお願いして本当に良かったです。私たちの要望を的確に理解していただき、想像以上のサイトを制作していただきました。公開後、お問い合わせが150%増加し、事業拡大につながっています。」</p>
+                        <div class="testimonial-item__content">
+                            <p class="testimonial-item__text">「LEXIAさんにお願いして本当に良かったです。私たちの要望を的確に理解していただき、想像以上のサイトを制作していただきました。公開後、お問い合わせが150%増加し、事業拡大につながっています。」</p>
                         </div>
-                        <div class="testimonial-author">
-                            <span class="author-name">有限会社朝岡パック様</span>
-                            <span class="author-title">代表取締役</span>
+                        <div class="testimonial-item__author">
+                            <span class="testimonial-item__author-name">有限会社朝岡パック様</span>
+                            <span class="testimonial-item__author-title">代表取締役</span>
                         </div>
                     </div>
                     
                     <div class="testimonial-item">
-                        <div class="testimonial-content">
-                            <p>「新規開業時にWEBサイトとパンフレット制作をお願いしました。地域の方に分かりやすく、信頼感のあるデザインで、開業から3ヶ月で予約が200%増加しました。アフターサポートも充実していて安心です。」</p>
+                        <div class="testimonial-item__content">
+                            <p class="testimonial-item__text">「新規開業時にWEBサイトとパンフレット制作をお願いしました。地域の方に分かりやすく、信頼感のあるデザインで、開業から3ヶ月で予約が200%増加しました。アフターサポートも充実していて安心です。」</p>
                         </div>
-                        <div class="testimonial-author">
-                            <span class="author-name">中村健康院様</span>
-                            <span class="author-title">院長</span>
+                        <div class="testimonial-item__author">
+                            <span class="testimonial-item__author-name">中村健康院様</span>
+                            <span class="testimonial-item__author-title">院長</span>
                         </div>
                     </div>
                     
                     <div class="testimonial-item">
-                        <div class="testimonial-content">
-                            <p>「コンセプトから一緒に考えていただき、私たちの理念を見事に表現したロゴとサイトを制作していただきました。多言語対応も含めて、細部まで配慮の行き届いた仕上がりに大変満足しています。」</p>
+                        <div class="testimonial-item__content">
+                            <p class="testimonial-item__text">「コンセプトから一緒に考えていただき、私たちの理念を見事に表現したロゴとサイトを制作していただきました。多言語対応も含めて、細部まで配慮の行き届いた仕上がりに大変満足しています。」</p>
                         </div>
-                        <div class="testimonial-author">
-                            <span class="author-name">中部開発株式会社様</span>
-                            <span class="author-title">代表取締役</span>
+                        <div class="testimonial-item__author">
+                            <span class="testimonial-item__author-name">中部開発株式会社様</span>
+                            <span class="testimonial-item__author-title">代表取締役</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="featured-projects-section">
-                <h3>注目プロジェクト</h3>
-                <div class="featured-projects-grid">
+            <section class="featured-projects">
+                <h3 class="featured-projects__title">注目プロジェクト</h3>
+                <div class="featured-projects__grid">
                     <div class="featured-project-item">
-                        <img src="placeholder-image.jpg" alt="有限会社朝岡パック様 コーポレートサイト">
-                        <div class="featured-project-content">
-                            <h4>有限会社朝岡パック様</h4>
-                            <p>包装資材製造会社のコーポレートサイト・ロゴ制作。CMS機能による更新容易化を実現。</p>
+                        <img src="placeholder-image.jpg" alt="有限会社朝岡パック様 コーポレートサイト" class="featured-project-item__image">
+                        <div class="featured-project-item__content">
+                            <h4 class="featured-project-item__title">有限会社朝岡パック様</h4>
+                            <p class="featured-project-item__description">包装資材製造会社のコーポレートサイト・ロゴ制作。CMS機能による更新容易化を実現。</p>
                             <div class="project-highlight">
-                                <span class="highlight-item">PV増加 150%</span>
-                                <span class="highlight-item">制作期間 3週間</span>
+                                <span class="project-highlight__item">PV増加 150%</span>
+                                <span class="project-highlight__item">制作期間 3週間</span>
                             </div>
                             <a href="portfolio.html" class="project-link">詳細を見る</a>
                         </div>
                     </div>
                     
                     <div class="featured-project-item">
-                        <img src="placeholder-image.jpg" alt="中村健康院様 コーポレートサイト">
-                        <div class="featured-project-content">
-                            <h4>中村健康院様</h4>
-                            <p>新規整体院の公式サイト・パンフレット・Googleマップ登録を一貫サポート。</p>
+                        <img src="placeholder-image.jpg" alt="中村健康院様 コーポレートサイト" class="featured-project-item__image">
+                        <div class="featured-project-item__content">
+                            <h4 class="featured-project-item__title">中村健康院様</h4>
+                            <p class="featured-project-item__description">新規整体院の公式サイト・パンフレット・Googleマップ登録を一貫サポート。</p>
                             <div class="project-highlight">
-                                <span class="highlight-item">予約増加 200%</span>
-                                <span class="highlight-item">制作期間 4週間</span>
+                                <span class="project-highlight__item">予約増加 200%</span>
+                                <span class="project-highlight__item">制作期間 4週間</span>
                             </div>
                             <a href="portfolio.html" class="project-link">詳細を見る</a>
                         </div>
                     </div>
                     
                     <div class="featured-project-item">
-                        <img src="placeholder-image.jpg" alt="中部開発株式会社様 コーポレートサイト">
-                        <div class="featured-project-content">
-                            <h4>中部開発株式会社様</h4>
-                            <p>人材派遣会社の多言語対応サイト・ロゴデザイン。グローバル展開を見据えた設計。</p>
+                        <img src="placeholder-image.jpg" alt="中部開発株式会社様 コーポレートサイト" class="featured-project-item__image">
+                        <div class="featured-project-item__content">
+                            <h4 class="featured-project-item__title">中部開発株式会社様</h4>
+                            <p class="featured-project-item__description">人材派遣会社の多言語対応サイト・ロゴデザイン。グローバル展開を見据えた設計。</p>
                             <div class="project-highlight">
-                                <span class="highlight-item">月間問い合わせ 10件</span>
-                                <span class="highlight-item">制作期間 2週間</span>
+                                <span class="project-highlight__item">月間問い合わせ 10件</span>
+                                <span class="project-highlight__item">制作期間 2週間</span>
                             </div>
                             <a href="portfolio.html" class="project-link">詳細を見る</a>
                         </div>
                     </div>
                 </div>
                 <div class="view-all-projects">
-                    <a href="portfolio.html" class="button">すべての制作実績を見る</a>
+                    <a href="portfolio.html" class="btn">すべての制作実績を見る</a>
                 </div>
             </section>
         </div>

@@ -30,78 +30,80 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-optimized.css">
 </head>
 <body>
     <!-- Skip to content リンク -->
     <a href="#main-content" class="skip-to-content">メインコンテンツへスキップ</a>
     
-    <header>
-        <div class="container">
-            <h1>LEXIA</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">トップ</a></li>
-                    <li><a href="about.html" class="active" aria-current="page">会社概要</a></li>
-                    <li><a href="services.html">サービス</a></li>
-                    <li><a href="portfolio.html">制作実績</a></li>
-                    <li><a href="contact.html">お問い合わせ</a></li>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__title">LEXIA</h1>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">トップ</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link nav__link--active" aria-current="page">会社概要</a></li>
+                    <li class="nav__item"><a href="services.html" class="nav__link">サービス</a></li>
+                    <li class="nav__item"><a href="portfolio.html" class="nav__link">制作実績</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">お問い合わせ</a></li>
                 </ul>
             </nav>
-            <button class="hamburger-menu" aria-label="メニューを開く" aria-expanded="false" aria-controls="fullscreen-nav">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="fullscreen-nav">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
             </button>
         </div>
     </header>
     <div class="fullscreen-nav" id="fullscreen-nav" aria-hidden="true">
-        <ul>
-            <li><a href="index.html">トップ</a></li>
-            <li><a href="about.html">会社概要</a></li>
-            <li><a href="services.html">サービス</a></li>
-            <li><a href="portfolio.html">制作実績</a></li>
-            <li><a href="contact.html">お問い合わせ</a></li>
+        <ul class="fullscreen-nav__list">
+            <li class="fullscreen-nav__item"><a href="index.html" class="fullscreen-nav__link">トップ</a></li>
+            <li class="fullscreen-nav__item"><a href="about.html" class="fullscreen-nav__link">会社概要</a></li>
+            <li class="fullscreen-nav__item"><a href="services.html" class="fullscreen-nav__link">サービス</a></li>
+            <li class="fullscreen-nav__item"><a href="portfolio.html" class="fullscreen-nav__link">制作実績</a></li>
+            <li class="fullscreen-nav__item"><a href="contact.html" class="fullscreen-nav__link">お問い合わせ</a></li>
         </ul>
     </div>
 
-    <main id="main-content">
-        <div class="container">
-            <h2>会社概要</h2>
-            <dl>
-                <dt>事業名</dt>
-                <dd>LEXIA</dd>
-                <dt>代表</dt>
-                <dd>齋藤雅人</dd>
-                <dt>事業内容</dt>
-                <dd>
-                    <ul>
-                        <li>ウェブ制作</li>
-                        <li>ロゴ、デザイン各種</li>
-                        <li>ドローン撮影</li>
-                        <li>SNS支援</li>
+    <main id="main-content" class="about">
+        <div class="about__container">
+            <h2 class="about__title">会社概要</h2>
+            <dl class="about__info">
+                <dt class="about__info-term">事業名</dt>
+                <dd class="about__info-desc">LEXIA</dd>
+                <dt class="about__info-term">代表</dt>
+                <dd class="about__info-desc">齋藤雅人</dd>
+                <dt class="about__info-term">事業内容</dt>
+                <dd class="about__info-desc">
+                    <ul class="about__service-list">
+                        <li class="about__service-item">ウェブ制作</li>
+                        <li class="about__service-item">ロゴ、デザイン各種</li>
+                        <li class="about__service-item">ドローン撮影</li>
+                        <li class="about__service-item">SNS支援</li>
                     </ul>
                 </dd>
-                <dt>設立</dt>
-                <dd>2022年3月26日</dd>
-                <dt>所在地</dt>
-                <dd>〒447-0817 愛知県碧南市川端町1丁目45</dd>
-                <dt>アクセス</dt>
-                <dd>名鉄三河線 碧南駅から徒歩15分 碧南人形前</dd>
-                <dt>TEL</dt>
-                <dd>090-1742-3456</dd>
-                <dt>Email</dt>
-                <dd>LEXIA0web@gmail.com</dd>
+                <dt class="about__info-term">設立</dt>
+                <dd class="about__info-desc">2022年3月26日</dd>
+                <dt class="about__info-term">所在地</dt>
+                <dd class="about__info-desc">〒447-0817 愛知県碧南市川端町1丁目45</dd>
+                <dt class="about__info-term">アクセス</dt>
+                <dd class="about__info-desc">名鉄三河線 碧南駅から徒歩15分 碧南人形前</dd>
+                <dt class="about__info-term">TEL</dt>
+                <dd class="about__info-desc">090-1742-3456</dd>
+                <dt class="about__info-term">Email</dt>
+                <dd class="about__info-desc">LEXIA0web@gmail.com</dd>
             </dl>
-            <h3>代表者プロフィール</h3>
-            <p>齋藤 雅人</p>
-            <p>WEBディレクター / WEBデザイナー</p>
+            <div class="about__profile">
+                <h3 class="about__profile-title">代表者プロフィール</h3>
+                <p class="about__profile-name">齋藤 雅人</p>
+                <p class="about__profile-role">WEBディレクター / WEBデザイナー</p>
+            </div>
         </div>
     </main>
-    <footer>
-        <div class="container">
-            <p class="catchphrase-footer">価値をカタチに、共に語り継がれる未来へ</p>
-            <p>&copy; 2025 LEXIA (lexia-hp.com)</p>
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__catchphrase">価値をカタチに、共に語り継がれる未来へ</p>
+            <p class="footer__copyright">&copy; 2025 LEXIA (lexia-hp.com)</p>
         </div>
     </footer>
     <script src="script.js"></script>
