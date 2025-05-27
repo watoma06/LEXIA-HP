@@ -186,8 +186,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.key === 'Escape' && lightbox.classList.contains('lightbox--active')) {
                 closeLightbox();
             }
-        });
-    }    // ===================================
+        });    }
+
+    // ===================================
     // アニメーション - タイピングエフェクト
     // ===================================
     
@@ -216,7 +217,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, speed);
         });
     }
-
-    // 初期化関数を呼び出し
+      // 初期化関数を呼び出し
     initTypingEffect();
 });
