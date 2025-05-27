@@ -22,9 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         });
-    }
-
-    // スムーズスクロール
+    }    // スムーズスクロール（prefers-reduced-motion対応）
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -32,39 +30,85 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                // ユーザーのモーション設定を確認
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                 targetElement.scrollIntoView({
-                    behavior: 'smooth'
+                    behavior: prefersReducedMotion ? 'auto' : 'smooth'
                 });
             }
         });
-    });
-
-    // ハンバーガーメニューとフルスクリーンナビゲーション
+    });    // ハンバーガーメニューとフルスクリーンナビゲーション
     const hamburgerMenu = document.querySelector('.hamburger-menu');
-    const fullscreenNav = document.querySelector('.fullscreen-nav'); // HTMLに追加する必要あり
+    const fullscreenNav = document.querySelector('.fullscreen-nav');
     const navLinks = document.querySelectorAll('.fullscreen-nav ul li a');
 
     if (hamburgerMenu && fullscreenNav) {
+        // メニューを開く/閉じる関数
+        function toggleMenu(open = null) {
+            const isCurrentlyOpen = fullscreenNav.classList.contains('active');
+            const shouldOpen = open !== null ? open : !isCurrentlyOpen;
+            
+            if (shouldOpen) {
+                hamburgerMenu.classList.add('active');
+                fullscreenNav.classList.add('active');
+                fullscreenNav.setAttribute('aria-hidden', 'false');
+                hamburgerMenu.setAttribute('aria-expanded', 'true');
+                hamburgerMenu.setAttribute('aria-label', 'メニューを閉じる');
+                document.body.style.overflow = 'hidden';
+                
+                // フォーカスを最初のナビリンクに移動
+                const firstNavLink = fullscreenNav.querySelector('a');
+                if (firstNavLink) {
+                    firstNavLink.focus();
+                }
+            } else {
+                hamburgerMenu.classList.remove('active');
+                fullscreenNav.classList.remove('active');
+                fullscreenNav.setAttribute('aria-hidden', 'true');
+                hamburgerMenu.setAttribute('aria-expanded', 'false');
+                hamburgerMenu.setAttribute('aria-label', 'メニューを開く');
+                document.body.style.overflow = '';
+                
+                // フォーカスをハンバーガーメニューに戻す
+                hamburgerMenu.focus();
+            }
+        }
+
         hamburgerMenu.addEventListener('click', function() {
-            this.classList.toggle('active');
-            fullscreenNav.classList.toggle('active');
-            // bodyにoverflow: hiddenをトグルして背景スクロールを防ぐ
-            document.body.style.overflow = fullscreenNav.classList.contains('active') ? 'hidden' : '';
-            // aria-expanded属性を更新
-            const isExpanded = this.classList.contains('active');
-            this.setAttribute('aria-expanded', isExpanded);
+            toggleMenu();
+        });
+
+        // Escキーでメニューを閉じる
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && fullscreenNav.classList.contains('active')) {
+                toggleMenu(false);
+            }
         });
 
         // フルスクリーンナビのリンククリックでメニューを閉じる
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (fullscreenNav.classList.contains('active')) {
-                    hamburgerMenu.classList.remove('active');
-                    fullscreenNav.classList.remove('active');
-                    document.body.style.overflow = '';
-                    hamburgerMenu.setAttribute('aria-expanded', 'false');
+                    toggleMenu(false);
                 }
             });
+        });
+
+        // フォーカストラップ（簡易版）
+        fullscreenNav.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                const focusableElements = fullscreenNav.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
         });
     }
 });
