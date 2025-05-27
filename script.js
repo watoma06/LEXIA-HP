@@ -252,15 +252,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
-    // ===================================
+      // ===================================
     // アニメーション - ホバーエフェクト
     // ===================================
-      // ポートフォリオアイテムにホバーアニメーションを追加
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    portfolioItems.forEach(item => {
-        item.classList.add('animate-hover-lift');
-    });
+    
+    // ポートフォリオアイテムにホバーアニメーションを追加
+    // 既存のportfolioItems変数を再利用
+    if (portfolioItems.length > 0) {
+        portfolioItems.forEach(item => {
+            item.classList.add('animate-hover-lift');
+        });
+    }
 
     // ボタンにホバーアニメーションを追加
     const buttons = document.querySelectorAll('.btn');
