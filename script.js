@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ポートフォリオフィルタリング機能（BEMクラス名に更新）
+    // ===================================
+    // ポートフォリオフィルタリング機能
+    // ===================================
     const filterButtons = document.querySelectorAll('.portfolio-filters__btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     
@@ -8,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             button.addEventListener('click', function() {
                 // Remove active class from all buttons
                 filterButtons.forEach(btn => btn.classList.remove('portfolio-filters__btn--active'));
+                
                 // Add active class to the clicked button
                 this.classList.add('portfolio-filters__btn--active');
 
@@ -27,13 +30,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         });
-    }// スムーズスクロール（prefers-reduced-motion対応）
+    }
+
+    // ===================================
+    // スムーズスクロール（prefers-reduced-motion対応）
+    // ===================================
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
+            
             if (targetElement) {
                 // ユーザーのモーション設定を確認
                 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -42,7 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
-    });    // ハンバーガーメニューとフルスクリーンナビゲーション（BEMクラス名に更新）
+    });
+
+    // ===================================
+    // ハンバーガーメニューとフルスクリーンナビゲーション
+    // ===================================
     const hamburgerMenu = document.querySelector('.hamburger');
     const fullscreenNav = document.querySelector('.fullscreen-nav');
     const navLinks = document.querySelectorAll('.fullscreen-nav__link');
@@ -81,7 +94,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         hamburgerMenu.addEventListener('click', function() {
             toggleMenu();
-        });        // Escキーでメニューを閉じる
+        });
+
+        // Escキーでメニューを閉じる
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && fullscreenNav.classList.contains('fullscreen-nav--active')) {
                 toggleMenu(false);
@@ -113,7 +128,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
-    }    // ライトボックス機能（BEMクラス名に更新）
+    }
+
+    // ===================================
+    // ライトボックス機能
+    // ===================================
     const portfolioImages = document.querySelectorAll('.portfolio-item__image, .featured-project-item__image');
     
     if (portfolioImages.length > 0) {
@@ -162,10 +181,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 closeLightbox();
             }
         });
-          // Escキーで閉じる
+
+        // Escキーで閉じる
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && lightbox.classList.contains('lightbox--active')) {
                 closeLightbox();
-            }        });
+            }
+        });
     }
 });
