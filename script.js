@@ -189,4 +189,126 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // ===================================
+    // アニメーション - スクロールトリガー機能
+    // ===================================
+    
+    // Intersection Observer を使用してスクロールアニメーションを実装
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in-view');
+                // 一度アニメーションが実行されたら監視を停止
+                animationObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // スクロールアニメーションを適用する要素を監視
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    animateElements.forEach(element => {
+        animationObserver.observe(element);
+    });
+    
+    // ===================================
+    // アニメーション - ページ読み込み時の初期アニメーション
+    // ===================================
+    
+    // ページ読み込み完了後に初期アニメーションを開始
+    window.addEventListener('load', function() {
+        // モーション設定を確認
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (!prefersReducedMotion) {
+            // ヒーローセクションのアニメーション
+            const heroTitle = document.querySelector('.hero__title');
+            const heroSubtitle = document.querySelector('.hero__subtitle');
+            const heroButtons = document.querySelectorAll('.hero__btn');
+            
+            if (heroTitle) {
+                setTimeout(() => heroTitle.classList.add('animate-fade-in'), 200);
+            }
+            if (heroSubtitle) {
+                setTimeout(() => heroSubtitle.classList.add('animate-fade-in', 'animate-delay-1'), 400);
+            }
+            heroButtons.forEach((btn, index) => {
+                setTimeout(() => btn.classList.add('animate-scale-in', `animate-delay-${index + 2}`), 600);
+            });
+        }
+    });
+    
+    // ===================================
+    // アニメーション - ホバーエフェクト
+    // ===================================
+    
+    // ポートフォリオアイテムにホバーアニメーションを追加
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    portfolioItems.forEach(item => {
+        item.classList.add('animate-hover-lift');
+    });
+    
+    // ボタンにホバーアニメーションを追加
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.classList.add('animate-hover-scale');
+    });
+    
+    // ===================================
+    // アニメーション - タイピングエフェクト
+    // ===================================
+    
+    function initTypingEffect() {
+        const typingElements = document.querySelectorAll('[data-typing]');
+        
+        typingElements.forEach(element => {
+            const text = element.textContent;
+            element.textContent = '';
+            element.classList.add('animate-typing');
+            
+            let index = 0;
+            const typeInterval = setInterval(() => {
+                element.textContent += text[index];
+                index++;
+                
+                if (index >= text.length) {
+                    clearInterval(typeInterval);
+                    // タイピング完了後、カーソルのブリンクを停止
+                    setTimeout(() => {
+                        element.style.borderRight = 'none';
+                    }, 1000);
+                }
+            }, 100);
+        });
+    }
+    
+    // ===================================
+    // アニメーション - ステガードアニメーション
+    // ===================================
+    
+    function initStaggeredAnimations() {
+        const staggerContainers = document.querySelectorAll('.animate-stagger');
+        
+        staggerContainers.forEach(container => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-stagger-active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            observer.observe(container);
+        });
+    }
+    
+    // 初期化関数を呼び出し
+    initTypingEffect();
+    initStaggeredAnimations();
 });

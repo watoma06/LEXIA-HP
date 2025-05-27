@@ -57,6 +57,14 @@
      --transition-base: 0.2s ease-in-out;
      --transition-slow: 0.3s ease;
      --transition-speed: 0.2s;
+     
+     /* Animation Variables */
+     --animation-duration-fast: 0.3s;
+     --animation-duration-normal: 0.6s;
+     --animation-duration-slow: 0.9s;
+     --animation-delay-base: 0.1s;
+     --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+     --animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* ========================================
@@ -1160,9 +1168,9 @@ a:hover::after {
 
 .testimonials__grid {
      display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
      gap: var(--spacing-lg);
-     max-width: 1000px;
+     max-width: var(--max-width);
      margin: 0 auto;
 }
 
@@ -1170,91 +1178,79 @@ a:hover::after {
      background: var(--color-white);
      padding: var(--spacing-lg);
      border-radius: var(--border-radius);
-     border: 1px solid var(--color-border);
-     position: relative;
-}
-
-.testimonial-item::before {
-     content: '"';
-     position: absolute;
-     top: var(--spacing-sm);
-     left: var(--spacing-md);
-     font-size: 3rem;
-     color: var(--color-accent);
-     opacity: 0.3;
-     font-family: Georgia, serif;
-     line-height: 1;
+     box-shadow: var(--box-shadow);
+     border-left: 4px solid var(--color-accent);
 }
 
 .testimonial-item__content {
-     margin-bottom: var(--spacing-lg);
-     margin-top: var(--spacing-sm);
+     margin-bottom: var(--spacing-md);
 }
 
 .testimonial-item__text {
      font-style: italic;
-     font-size: var(--font-size-md);
      line-height: 1.7;
-     color: var(--color-text);
-     margin-bottom: 0;
+     color: var(--color-muted);
+     margin-bottom: var(--spacing-md);
 }
 
 .testimonial-item__author {
-     display: flex;
-     flex-direction: column;
+     text-align: right;
      border-top: 1px solid var(--color-border);
-     padding-top: var(--spacing-md);
+     padding-top: var(--spacing-sm);
 }
 
 .testimonial-item__author-name {
+     display: block;
      font-weight: 600;
-     color: var(--color-accent);
-     font-size: var(--font-size-md);
-     margin-bottom: var(--spacing-xs);
+     color: var(--color-primary);
+     font-size: var(--font-size-sm);
 }
 
 .testimonial-item__author-title {
-     font-size: var(--font-size-sm);
+     display: block;
      color: var(--color-muted);
+     font-size: var(--font-size-xs);
 }
 
-/* Featured Projects Section */
+/* ========================================
+    Featured Projects Component
+    ======================================== */
 .featured-projects {
-     margin: var(--spacing-xl) 0;
+     padding: var(--section-padding);
 }
 
 .featured-projects__title {
      font-size: var(--font-size-xl);
-     margin-bottom: var(--spacing-lg);
+     margin-bottom: var(--spacing-xl);
      text-align: center;
      color: var(--color-primary);
 }
 
 .featured-projects__grid {
      display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
      gap: var(--spacing-lg);
-     margin-bottom: var(--spacing-lg);
+     margin-bottom: var(--spacing-xl);
 }
 
 .featured-project-item {
-     border: 1px solid var(--color-border);
-     border-radius: var(--border-radius);
      background: var(--color-white);
-     transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
+     border-radius: var(--border-radius);
+     overflow: hidden;
+     box-shadow: var(--box-shadow);
+     transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 .featured-project-item:hover {
-     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-     transform: translateY(-2px);
+     transform: translateY(-5px);
+     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .featured-project-item__image {
      width: 100%;
      height: 200px;
      object-fit: cover;
-     border-radius: var(--border-radius) var(--border-radius) 0 0;
-     display: block;
+     cursor: pointer;
 }
 
 .featured-project-item__content {
@@ -1262,252 +1258,467 @@ a:hover::after {
 }
 
 .featured-project-item__title {
-     margin-top: 0;
-     margin-bottom: var(--spacing-md);
-     color: var(--color-text);
      font-size: var(--font-size-lg);
+     margin-bottom: var(--spacing-sm);
+     color: var(--color-primary);
 }
 
 .featured-project-item__description {
-     font-size: var(--font-size-sm);
-     color: var(--color-text);
      margin-bottom: var(--spacing-md);
      line-height: 1.6;
+     color: var(--color-muted);
 }
 
 .project-highlight {
      display: flex;
+     gap: var(--spacing-sm);
+     margin-bottom: var(--spacing-md);
      flex-wrap: wrap;
-     gap: var(--spacing-md);
-     margin-bottom: var(--spacing-lg);
 }
 
 .project-highlight__item {
-     background: var(--color-secondary-bg);
+     background: var(--color-accent-light);
      color: var(--color-accent);
-     padding: var(--spacing-xs) var(--spacing-md);
+     padding: var(--spacing-xs) var(--spacing-sm);
+     border-radius: var(--border-radius);
      font-size: var(--font-size-xs);
-     font-weight: 600;
-     border-left: 3px solid var(--color-accent);
-     border-radius: 0 var(--border-radius) var(--border-radius) 0;
+     font-weight: 500;
 }
 
 .project-link {
-     color: var(--color-accent) !important;
+     color: var(--color-accent);
      text-decoration: none;
      font-weight: 500;
-     font-size: var(--font-size-sm);
-     border-bottom: 1px solid var(--color-accent);
-     transition: opacity var(--transition-speed) ease;
+     transition: color var(--transition-speed) ease;
 }
 
 .project-link:hover {
-     opacity: 0.8;
+     color: var(--color-primary);
+     text-decoration: underline;
 }
 
 .view-all-projects {
      text-align: center;
-     margin-top: var(--spacing-xl);
+}
+
+.view-all-projects .btn {
+     display: inline-block;
 }
 
 /* ========================================
-    Responsive Design - Mobile & Tablet Optimization
+    Animation Keyframes
     ======================================== */
 
-/* Tablet - 768px以下 */
-@media (max-width: 768px) {
-     /* Header & Navigation */
-     .nav__list {
-          display: none;
+/* 1. フェードインアニメーション */
+@keyframes fadeIn {
+     from {
+          opacity: 0;
+          transform: translateY(20px);
      }
-     
-     .hamburger {
-          display: block;
-     }
-     
-     .header__container {
-          padding: 0 var(--spacing-md);
-     }
-     
-     /* Skip to Content Mobile */
-     .skip-to-content {
-          left: var(--spacing-sm);
-          font-size: var(--font-size-xs);
-          padding: 6px 12px;
-     }
-     
-     .skip-to-content:focus {
-          top: var(--spacing-sm);
-     }
-     
-     /* Hero Section */
-     .hero__title {
-          font-size: 2.5rem;
-     }
-     
-     .hero__subtitle {
-          font-size: 1.2rem;
-     }
-     
-     /* Typography */
-     h1 { 
-          font-size: 2rem; 
-     }
-     
-     h2 { 
-          font-size: 1.5rem; 
-     }
-     
-     h3 { 
-          font-size: 1.25rem; 
-     }
-     
-     /* メインコンテンツエリアのスペーシング調整（タブレット） */
-     .home__container > * + * {
-          margin-top: calc(var(--spacing-unit) * 4); /* タブレットでは間隔を少し狭める */
-     }
-     
-     .testimonials, 
-     .featured-projects {
-          padding: calc(var(--spacing-unit) * 3) 0; /* タブレット用パディング */
-          margin: calc(var(--spacing-unit) * 4) 0; /* タブレット用マージン */
-     }
-     
-     /* Portfolio Grid */
-     .portfolio-grid {
-          grid-template-columns: 1fr;
-          gap: var(--spacing-md);
-     }
-     
-     .portfolio__grid {
-          grid-template-columns: 1fr;
-          gap: var(--spacing-md);
-     }
-     
-     /* Services Grid */
-     .services__grid {
-          grid-template-columns: 1fr;
-          gap: var(--spacing-md);
-     }
-     
-     /* Container */
-     .container,
-     .about__container,
-     .services__container,
-     .portfolio__container,
-     .contact__container {
-          width: 95%;
-          padding: 0 var(--spacing-sm);
-     }
-     
-     /* Buttons */
-     .btn {
-          width: 100%;
-          margin: var(--spacing-xs) 0;
-          display: block;
-          text-align: center;
-     }
-     
-     .hero__btn {
-          width: auto;
-          display: inline-block;
-          margin: var(--spacing-xs);
-     }
-     
-     /* Portfolio Filters */
-     .portfolio-filters {
-          flex-direction: column;
-          gap: var(--spacing-xs);
-     }
-     
-     .portfolio-filters__btn {
-          width: 100%;
-          margin: var(--spacing-xs) 0;
+     to {
+          opacity: 1;
+          transform: translateY(0);
      }
 }
 
-/* Mobile - 480px以下 */
-@media (max-width: 480px) {
-     /* Skip to Content Small Mobile */
-     .skip-to-content {
-          left: 4px;
-          font-size: 0.7rem;
-          padding: 4px 8px;
-          border-radius: 3px;
+/* 2. スライドインアニメーション（左から） */
+@keyframes slideInLeft {
+     from {
+          opacity: 0;
+          transform: translateX(-100px);
+     }
+     to {
+          opacity: 1;
+          transform: translateX(0);
+     }
+}
+
+/* 3. スライドインアニメーション（右から） */
+@keyframes slideInRight {
+     from {
+          opacity: 0;
+          transform: translateX(100px);
+     }
+     to {
+          opacity: 1;
+          transform: translateX(0);
+     }
+}
+
+/* 4. スケールアニメーション */
+@keyframes scaleIn {
+     from {
+          opacity: 0;
+          transform: scale(0.8);
+     }
+     to {
+          opacity: 1;
+          transform: scale(1);
+     }
+}
+
+/* 5. 回転フェードイン */
+@keyframes rotateIn {
+     from {
+          opacity: 0;
+          transform: rotate(-180deg) scale(0.8);
+     }
+     to {
+          opacity: 1;
+          transform: rotate(0deg) scale(1);
+     }
+}
+
+/* 6. バウンスイン */
+@keyframes bounceIn {
+     0% {
+          opacity: 0;
+          transform: scale(0.3);
+     }
+     50% {
+          opacity: 1;
+          transform: scale(1.05);
+     }
+     70% {
+          transform: scale(0.9);
+     }
+     100% {
+          opacity: 1;
+          transform: scale(1);
+     }
+}
+
+/* 7. タイピングエフェクト */
+@keyframes typing {
+     from {
+          width: 0;
+     }
+     to {
+          width: 100%;
+     }
+}
+
+@keyframes blink {
+     0%, 50% {
+          border-color: transparent;
+     }
+     51%, 100% {
+          border-color: var(--color-accent);
+     }
+}
+
+/* 8. ワイプイン */
+@keyframes wipeIn {
+     from {
+          clip-path: inset(0 100% 0 0);
+     }
+     to {
+          clip-path: inset(0 0 0 0);
+     }
+}
+
+/* 9. フリップイン */
+@keyframes flipIn {
+     from {
+          opacity: 0;
+          transform: perspective(400px) rotateY(-90deg);
+     }
+     40% {
+          transform: perspective(400px) rotateY(-20deg);
+     }
+     60% {
+          transform: perspective(400px) rotateY(10deg);
+     }
+     80% {
+          transform: perspective(400px) rotateY(-5deg);
+     }
+     to {
+          opacity: 1;
+          transform: perspective(400px) rotateY(0deg);
+     }
+}
+
+/* 10. パルスエフェクト */
+@keyframes pulse {
+     0% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.7);
+     }
+     70% {
+          transform: scale(1.05);
+          box-shadow: 0 0 0 10px rgba(255, 107, 0, 0);
+     }
+     100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(255, 107, 0, 0);
+     }
+}
+
+/* ========================================
+    Animation Classes
+    ======================================== */
+
+/* 基本的なアニメーションクラス */
+.animate-fade-in {
+     animation: fadeIn var(--animation-duration-normal) var(--animation-easing) forwards;
+     opacity: 0;
+}
+
+.animate-slide-in-left {
+     animation: slideInLeft var(--animation-duration-normal) var(--animation-easing) forwards;
+     opacity: 0;
+}
+
+.animate-slide-in-right {
+     animation: slideInRight var(--animation-duration-normal) var(--animation-easing) forwards;
+     opacity: 0;
+}
+
+.animate-scale-in {
+     animation: scaleIn var(--animation-duration-normal) var(--animation-easing) forwards;
+     opacity: 0;
+}
+
+.animate-rotate-in {
+     animation: rotateIn var(--animation-duration-slow) var(--animation-easing) forwards;
+     opacity: 0;
+}
+
+.animate-bounce-in {
+     animation: bounceIn var(--animation-duration-slow) var(--animation-bounce) forwards;
+     opacity: 0;
+}
+
+.animate-wipe-in {
+     animation: wipeIn var(--animation-duration-normal) var(--animation-easing) forwards;
+}
+
+.animate-flip-in {
+     animation: flipIn var(--animation-duration-slow) var(--animation-easing) forwards;
+     opacity: 0;
+}
+
+.animate-pulse {
+     animation: pulse 2s infinite;
+}
+
+/* タイピングエフェクト用 */
+.animate-typing {
+     overflow: hidden;
+     border-right: 2px solid var(--color-accent);
+     white-space: nowrap;
+     margin: 0 auto;
+     animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
+}
+
+/* 遅延アニメーション */
+.animate-delay-1 { animation-delay: calc(var(--animation-delay-base) * 1); }
+.animate-delay-2 { animation-delay: calc(var(--animation-delay-base) * 2); }
+.animate-delay-3 { animation-delay: calc(var(--animation-delay-base) * 3); }
+.animate-delay-4 { animation-delay: calc(var(--animation-delay-base) * 4); }
+.animate-delay-5 { animation-delay: calc(var(--animation-delay-base) * 5); }
+.animate-delay-6 { animation-delay: calc(var(--animation-delay-base) * 6); }
+
+/* ホバーアニメーション */
+.animate-hover-scale {
+     transition: transform var(--animation-duration-fast) var(--animation-easing);
+}
+
+.animate-hover-scale:hover {
+     transform: scale(1.05);
+}
+
+.animate-hover-lift {
+     transition: transform var(--animation-duration-fast) var(--animation-easing), box-shadow var(--animation-duration-fast) var(--animation-easing);
+}
+
+.animate-hover-lift:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* スクロールトリガー用のクラス */
+.animate-on-scroll {
+     opacity: 0;
+     transform: translateY(30px);
+     transition: opacity var(--animation-duration-normal) var(--animation-easing), 
+                 transform var(--animation-duration-normal) var(--animation-easing);
+}
+
+.animate-on-scroll.animate-in-view {
+     opacity: 1;
+     transform: translateY(0);
+}
+
+/* ステガードアニメーション用 */
+.animate-stagger > * {
+     opacity: 0;
+     transform: translateY(20px);
+     animation: fadeIn var(--animation-duration-normal) var(--animation-easing) forwards;
+}
+
+.animate-stagger > *:nth-child(1) { animation-delay: calc(var(--animation-delay-base) * 1); }
+.animate-stagger > *:nth-child(2) { animation-delay: calc(var(--animation-delay-base) * 2); }
+.animate-stagger > *:nth-child(3) { animation-delay: calc(var(--animation-delay-base) * 3); }
+.animate-stagger > *:nth-child(4) { animation-delay: calc(var(--animation-delay-base) * 4); }
+.animate-stagger > *:nth-child(5) { animation-delay: calc(var(--animation-delay-base) * 5); }
+.animate-stagger > *:nth-child(6) { animation-delay: calc(var(--animation-delay-base) * 6); }
+
+/* アニメーション一時停止 */
+.animate-paused {
+     animation-play-state: paused;
+}
+
+/* モーション設定を尊重 */
+@media (prefers-reduced-motion: reduce) {
+     .animate-fade-in,
+     .animate-slide-in-left,
+     .animate-slide-in-right,
+     .animate-scale-in,
+     .animate-rotate-in,
+     .animate-bounce-in,
+     .animate-wipe-in,
+     .animate-flip-in,
+     .animate-on-scroll,
+     .animate-stagger > * {
+          animation: none;
+          opacity: 1;
+          transform: none;
      }
      
-     .skip-to-content:focus {
-          top: 4px;
+     .animate-hover-scale:hover,
+     .animate-hover-lift:hover {
+          transform: none;
+     }
+}
+
+/* ========================================
+    Keyframes
+    ======================================== */
+@keyframes fadeIn {
+     0% {
+          opacity: 0;
+     }
+     100% {
+          opacity: 1;
+     }
+}
+
+@keyframes fadeOut {
+     0% {
+          opacity: 1;
+     }
+     100% {
+          opacity: 0;
+     }
+}
+
+@keyframes slideIn {
+     0% {
+          transform: translateY(-10px);
+          opacity: 0;
+     }
+     100% {
+          transform: translateY(0);
+          opacity: 1;
+     }
+}
+
+@keyframes slideOut {
+     0% {
+          transform: translateY(0);
+          opacity: 1;
+     }
+     100% {
+          transform: translateY(-10px);
+          opacity: 0;
+     }
+}
+
+@keyframes zoomIn {
+     0% {
+          transform: scale(0.9);
+          opacity: 0;
+     }
+     100% {
+          transform: scale(1);
+          opacity: 1;
+     }
+}
+
+@keyframes zoomOut {
+     0% {
+          transform: scale(1);
+          opacity: 1;
+     }
+     100% {
+          transform: scale(0.9);
+          opacity: 0;
+     }
+}
+
+@keyframes bounce {
+     0%,
+     100% {
+          transform: translateY(0);
+     }
+     50% {
+          transform: translateY(-10px);
+     }
+}
+
+@keyframes rotate {
+     0% {
+          transform: rotate(0deg);
+     }
+     100% {
+          transform: rotate(360deg);
+     }
+}
+
+/* ========================================
+    Responsive Design Adjustments
+    ======================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+     .testimonials__grid,
+     .featured-projects__grid {
+          grid-template-columns: 1fr;
      }
      
-     /* Typography */
      .hero__title {
           font-size: 2rem;
-          line-height: 1.1;
      }
      
-     .hero__subtitle {
-          font-size: 1rem;
+     .animate-typing {
+          font-size: 1.8rem;
      }
      
-     /* メインコンテンツエリアのスペーシング調整（モバイル） */
-     .home__container > * + * {
-          margin-top: calc(var(--spacing-unit) * 3); /* モバイルでは間隔をさらに狭める */
+     /* アニメーション遅延を短縮 */
+     :root {
+          --animation-delay-base: 0.05s;
+     }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+     .hero__title {
+          font-size: 1.5rem;
      }
      
-     .testimonials, 
-     .featured-projects {
-          padding: calc(var(--spacing-unit) * 2) 0; /* モバイル用パディング */
-          margin: calc(var(--spacing-unit) * 3) 0; /* モバイル用マージン */
+     .animate-typing {
+          font-size: 1.3rem;
      }
      
-     /* Portfolio Stats */
-     .portfolio-item__stats {
-          grid-template-columns: 1fr;
-          gap: var(--spacing-sm);
-     }
-     
-     .portfolio-stats {
-          flex-direction: column;
-          gap: var(--spacing-sm);
-     }
-     
-     /* Contact Form */
-     .contact-form {
-          padding: var(--spacing-lg);
-     }
-     
-     .contact-form__field {
+     .testimonial-item,
+     .featured-project-item {
           margin-bottom: var(--spacing-md);
      }
      
-     /* Lightbox */
-     .lightbox__content {
-          max-width: 95vw;
-          max-height: 95vh;
-     }
-     
-     .lightbox__close {
-          top: -30px;
-          font-size: 1.5rem;
-     }
-}
-
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-     *,
-     *::before,
-     *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-     }
-     
-     .skip-to-content {
-          transition: none;
-     }
-     
-     .skip-to-content:focus {
-          transform: none;
+     /* モバイルでのアニメーション簡素化 */
+     .animate-flip-in,
+     .animate-rotate-in {
+          animation: fadeIn var(--animation-duration-fast) var(--animation-easing) forwards;
      }
 }
