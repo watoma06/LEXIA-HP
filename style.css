@@ -1460,52 +1460,44 @@ a:hover::after {
     Animation Classes
     ======================================== */
 
-/* 基本的なアニメーションクラス */
+/* 基本的なアニメーションクラス（アニメーション削除後は常に表示） */
 .animate-fade-in {
-     opacity: 0;
-     animation: fadeIn var(--animation-duration-normal) var(--animation-easing) forwards;
-     will-change: opacity, transform;
+     opacity: 1;
+     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
 .animate-slide-in-left {
-     opacity: 0;
-     animation: slideInLeft var(--animation-duration-normal) var(--animation-easing) forwards;
-     will-change: opacity, transform;
+     opacity: 1;
+     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
 .animate-slide-in-right {
-     opacity: 0;
-     animation: slideInRight var(--animation-duration-normal) var(--animation-easing) forwards;
-     will-change: opacity, transform;
+     opacity: 1;
+     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
 .animate-scale-in {
-     opacity: 0;
-     animation: scaleIn var(--animation-duration-normal) var(--animation-easing) forwards;
-     will-change: opacity, transform;
+     opacity: 1;
+     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
 .animate-rotate-in {
-     opacity: 0;
-     animation: rotateIn var(--animation-duration-slow) var(--animation-easing) forwards;
-     will-change: opacity, transform;
+     opacity: 1;     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
 .animate-bounce-in {
-     opacity: 0;
-     animation: bounceIn var(--animation-duration-slow) var(--animation-bounce) forwards;
-     will-change: opacity, transform;
+     opacity: 1;
+     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
 .animate-wipe-in {
-     animation: wipeIn var(--animation-duration-normal) var(--animation-easing) forwards;
-     will-change: clip-path;
+     opacity: 1;
+     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
 .animate-flip-in {
-     opacity: 0;
-     animation: flipIn var(--animation-duration-slow) var(--animation-easing) forwards;
-     will-change: opacity, transform;
+     opacity: 1;
+     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
 .animate-pulse {
@@ -1550,32 +1542,25 @@ a:hover::after {
      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* スクロールトリガー用のクラス */
+/* スクロールトリガー用のクラス（アニメーション削除後は常に表示） */
 .animate-on-scroll {
-     opacity: 0;
-     transform: translateY(30px);
-     transition: opacity var(--animation-duration-normal) var(--animation-easing), 
-                 transform var(--animation-duration-normal) var(--animation-easing);
-     will-change: opacity, transform;
-}
-
-.animate-on-scroll.animate-in-view {
      opacity: 1;
      transform: translateY(0);
+     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
-/* スクロールアニメーション初期状態 */
+/* スクロールアニメーション初期状態（アニメーション削除後は常に表示） */
 .animate-not-in-view {
-     opacity: 0;
-     transform: translateY(30px);
-     will-change: opacity, transform;
+     opacity: 1;
+     transform: translateY(0);
+     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
-/* ステガードアニメーション関連 */
+/* ステガードアニメーション関連（アニメーション削除後は常に表示） */
 .animate-stagger-item-hidden {
-     opacity: 0;
-     transform: translateY(20px);
-     will-change: opacity, transform;
+     opacity: 1;
+     transform: translateY(0);
+     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
 .animate-stagger-active .animate-stagger-item-hidden {
@@ -1589,12 +1574,11 @@ a:hover::after {
 .animate-stagger-active .animate-stagger-item-hidden:nth-child(5) { animation-delay: calc(var(--animation-delay-base) * 5); }
 .animate-stagger-active .animate-stagger-item-hidden:nth-child(6) { animation-delay: calc(var(--animation-delay-base) * 6); }
 
-/* ステガードアニメーション用 */
+/* ステガードアニメーション用（アニメーション削除後は常に表示） */
 .animate-stagger > * {
-     opacity: 0;
-     transform: translateY(20px);
-     animation: fadeIn var(--animation-duration-normal) var(--animation-easing) forwards;
-     will-change: opacity, transform;
+     opacity: 1;
+     transform: translateY(0);
+     /* アニメーション無効化 - 要素を常に表示状態にする */
 }
 
 .animate-stagger > *:nth-child(1) { animation-delay: calc(var(--animation-delay-base) * 1); }
