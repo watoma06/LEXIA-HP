@@ -174,8 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         lightboxClose.addEventListener('click', closeLightbox);
-        
-        // 背景クリックで閉じる
+          // 背景クリックで閉じる
         lightbox.addEventListener('click', function(e) {
             if (e.target === lightbox) {
                 closeLightbox();
@@ -199,8 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
-    const animationObserver = new IntersectionObserver((entries) => {
+      const animationObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in-view');
@@ -209,13 +207,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, observerOptions);
-    
+
     // スクロールアニメーションを適用する要素を監視
     const animateElements = document.querySelectorAll('.animate-on-scroll');
     animateElements.forEach(element => {
+        // 要素を初期状態で非表示にする
+        element.classList.add('animate-not-in-view');
         animationObserver.observe(element);
     });
-    
+
     // ===================================
     // アニメーション - ページ読み込み時の初期アニメーション
     // ===================================
@@ -231,34 +231,43 @@ document.addEventListener('DOMContentLoaded', function() {
             const heroSubtitle = document.querySelector('.hero__subtitle');
             const heroButtons = document.querySelectorAll('.hero__btn');
             
-            if (heroTitle) {
-                setTimeout(() => heroTitle.classList.add('animate-fade-in'), 200);
-            }
+            // タイトルはタイピングエフェクトが適用されるのでそのままにする
             if (heroSubtitle) {
-                setTimeout(() => heroSubtitle.classList.add('animate-fade-in', 'animate-delay-1'), 400);
+                setTimeout(() => {
+                    heroSubtitle.classList.add('animate-fade-in');
+                }, 500);
             }
             heroButtons.forEach((btn, index) => {
-                setTimeout(() => btn.classList.add('animate-scale-in', `animate-delay-${index + 2}`), 600);
+                setTimeout(() => {
+                    btn.classList.add('animate-scale-in');
+                }, 1500 + (index * 200));
             });
+            
+            // ページタイトル要素にフェードインを適用
+            const pageTitle = document.querySelector('.about__title, .services__title, .portfolio__title, .contact__title');
+            if (pageTitle) {
+                setTimeout(() => {
+                    pageTitle.classList.add('animate-fade-in');
+                }, 300);
+            }
         }
     });
     
     // ===================================
     // アニメーション - ホバーエフェクト
     // ===================================
-    
-    // ポートフォリオアイテムにホバーアニメーションを追加
+      // ポートフォリオアイテムにホバーアニメーションを追加
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     portfolioItems.forEach(item => {
         item.classList.add('animate-hover-lift');
     });
-    
+
     // ボタンにホバーアニメーションを追加
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(btn => {
         btn.classList.add('animate-hover-scale');
     });
-    
+
     // ===================================
     // アニメーション - タイピングエフェクト
     // ===================================
@@ -268,10 +277,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         typingElements.forEach(element => {
             const text = element.textContent;
-            element.textContent = '';
-            element.classList.add('animate-typing');
+            const speed = parseInt(element.getAttribute('data-typing-speed')) || 80;
             
-            let index = 0;
+            element.textContent = '';
+            element.style.borderRight = '2px solid var(--color-accent)';
+            element.style.display = 'inline-block';
+              let index = 0;
             const typeInterval = setInterval(() => {
                 element.textContent += text[index];
                 index++;
@@ -283,10 +294,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         element.style.borderRight = 'none';
                     }, 1000);
                 }
-            }, 100);
+            }, speed);
         });
     }
-    
+
     // ===================================
     // アニメーション - ステガードアニメーション
     // ===================================
@@ -295,6 +306,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const staggerContainers = document.querySelectorAll('.animate-stagger');
         
         staggerContainers.forEach(container => {
+            // 子要素を初期状態で非表示にする
+            const children = container.children;
+            for (let i = 0; i < children.length; i++) {
+                children[i].classList.add('animate-stagger-item-hidden');
+            }
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -305,10 +322,147 @@ document.addEventListener('DOMContentLoaded', function() {
             }, observerOptions);
             
             observer.observe(container);
+        });    }
+    
+    // ===================================
+    // GPU最適化 - will-changeプロパティの管理
+    // ===================================
+    
+    function optimizeGPUMemory() {
+        // アニメーション完了後にwill-changeをリセットしてメモリを解放
+        const animatedElements = document.querySelectorAll('[class*="animate-"]');
+        
+        animatedElements.forEach(element => {
+            element.addEventListener('animationend', function() {
+                // アニメーション完了後にwill-changeをautoに設定してGPUメモリを解放
+                this.style.willChange = 'auto';
+            });
+            
+            element.addEventListener('transitionend', function() {
+                // トランジション完了後にwill-changeをautoに設定
+                this.style.willChange = 'auto';
+            });
+        });
+        
+        // ホバーエフェクト用の最適化
+        const hoverElements = document.querySelectorAll('.animate-hover-scale, .animate-hover-lift');
+        hoverElements.forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.willChange = 'transform';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                // ホバー終了後少し遅延してwill-changeをリセット
+                setTimeout(() => {
+                    this.style.willChange = 'auto';
+                }, 300);
+            });
         });
     }
     
-    // 初期化関数を呼び出し
+    // ===================================
+    // パフォーマンス監視とアニメーション最適化
+    // ===================================
+    
+    function initPerformanceOptimization() {
+        // FPS監視（開発用）
+        let frameCount = 0;
+        let lastTime = performance.now();
+        
+        function measureFPS() {
+            frameCount++;
+            const currentTime = performance.now();
+            
+            if (currentTime >= lastTime + 1000) {
+                const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
+                
+                // 低FPS検出時にアニメーションを簡素化
+                if (fps < 30) {
+                    console.warn('Low FPS detected, simplifying animations');
+                    document.documentElement.classList.add('low-performance');
+                }
+                
+                frameCount = 0;
+                lastTime = currentTime;
+            }
+            
+            requestAnimationFrame(measureFPS);
+        }
+        
+        // デバッグモードでのみFPS監視を有効化
+        if (window.location.hostname === 'localhost' || window.location.search.includes('debug=true')) {
+            measureFPS();
+        }
+        
+        // IntersectionObserverのパフォーマンス最適化
+        const observerConfig = {
+            threshold: [0, 0.1, 0.5, 1],
+            rootMargin: '50px 0px -100px 0px'
+        };
+        
+        // 画面外の要素のアニメーションを一時停止
+        const performanceObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const element = entry.target;
+                
+                if (entry.intersectionRatio === 0) {
+                    // 画面外の場合、アニメーションを一時停止
+                    element.style.animationPlayState = 'paused';
+                } else if (entry.intersectionRatio > 0.1) {
+                    // 画面内の場合、アニメーションを再開
+                    element.style.animationPlayState = 'running';
+                }
+            });
+        }, observerConfig);
+        
+        // アニメーション要素を監視対象に追加
+        const animatedElements = document.querySelectorAll('[class*="animate-"]');
+        animatedElements.forEach(element => {
+            performanceObserver.observe(element);
+        });
+    }
+    
+    // ===================================
+    // レスポンシブ画像の遅延読み込み最適化
+    // ===================================
+    
+    function initLazyLoading() {
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        
+                        // 画像読み込み前にスケルトンアニメーションを表示
+                        img.style.backgroundColor = '#f0f0f0';
+                        img.style.backgroundImage = 'linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)';
+                        img.style.backgroundSize = '200% 100%';
+                        img.style.animation = 'loading-skeleton 1.5s infinite';
+                        
+                        // 実際の画像を読み込み
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.onload = () => {
+                                img.style.animation = '';
+                                img.style.backgroundImage = '';
+                            };
+                        }
+                        
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            // data-src属性を持つ画像要素を遅延読み込み対象に
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            lazyImages.forEach(img => imageObserver.observe(img));
+        }
+    }    // 初期化関数を呼び出し
     initTypingEffect();
     initStaggeredAnimations();
+    optimizeGPUMemory();
+    initPerformanceOptimization();
+    initLazyLoading();
+    initPerformanceOptimization();
+    initLazyLoading();
 });

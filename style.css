@@ -56,9 +56,7 @@
      /* Transition Variables */
      --transition-base: 0.2s ease-in-out;
      --transition-slow: 0.3s ease;
-     --transition-speed: 0.2s;
-     
-     /* Animation Variables */
+     --transition-speed: 0.2s;     /* Animation Variables */
      --animation-duration-fast: 0.3s;
      --animation-duration-normal: 0.6s;
      --animation-duration-slow: 0.9s;
@@ -351,6 +349,7 @@ a:hover::after {
      transition: transform 0.5s ease-in-out;
      opacity: 0;
      visibility: hidden;
+     will-change: transform, opacity;
 }
 
 .fullscreen-nav--active {
@@ -511,6 +510,7 @@ a:hover::after {
      transition: box-shadow var(--transition-base), opacity var(--transition-slow), transform var(--transition-slow);
      opacity: 1;
      transform: scale(1);
+     will-change: transform, opacity, box-shadow;
 }
 
 .portfolio-item:hover {
@@ -887,6 +887,7 @@ a:hover::after {
      border-radius: var(--border-radius);
      cursor: pointer;
      transition: transform var(--transition-speed) ease;
+     will-change: transform;
 }
 
 .portfolio-item__image:hover {
@@ -1239,6 +1240,7 @@ a:hover::after {
      overflow: hidden;
      box-shadow: var(--box-shadow);
      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+     will-change: transform, box-shadow;
 }
 
 .featured-project-item:hover {
@@ -1460,55 +1462,64 @@ a:hover::after {
 
 /* 基本的なアニメーションクラス */
 .animate-fade-in {
-     animation: fadeIn var(--animation-duration-normal) var(--animation-easing) forwards;
      opacity: 0;
+     animation: fadeIn var(--animation-duration-normal) var(--animation-easing) forwards;
+     will-change: opacity, transform;
 }
 
 .animate-slide-in-left {
-     animation: slideInLeft var(--animation-duration-normal) var(--animation-easing) forwards;
      opacity: 0;
+     animation: slideInLeft var(--animation-duration-normal) var(--animation-easing) forwards;
+     will-change: opacity, transform;
 }
 
 .animate-slide-in-right {
-     animation: slideInRight var(--animation-duration-normal) var(--animation-easing) forwards;
      opacity: 0;
+     animation: slideInRight var(--animation-duration-normal) var(--animation-easing) forwards;
+     will-change: opacity, transform;
 }
 
 .animate-scale-in {
-     animation: scaleIn var(--animation-duration-normal) var(--animation-easing) forwards;
      opacity: 0;
+     animation: scaleIn var(--animation-duration-normal) var(--animation-easing) forwards;
+     will-change: opacity, transform;
 }
 
 .animate-rotate-in {
-     animation: rotateIn var(--animation-duration-slow) var(--animation-easing) forwards;
      opacity: 0;
+     animation: rotateIn var(--animation-duration-slow) var(--animation-easing) forwards;
+     will-change: opacity, transform;
 }
 
 .animate-bounce-in {
-     animation: bounceIn var(--animation-duration-slow) var(--animation-bounce) forwards;
      opacity: 0;
+     animation: bounceIn var(--animation-duration-slow) var(--animation-bounce) forwards;
+     will-change: opacity, transform;
 }
 
 .animate-wipe-in {
      animation: wipeIn var(--animation-duration-normal) var(--animation-easing) forwards;
+     will-change: clip-path;
 }
 
 .animate-flip-in {
-     animation: flipIn var(--animation-duration-slow) var(--animation-easing) forwards;
      opacity: 0;
+     animation: flipIn var(--animation-duration-slow) var(--animation-easing) forwards;
+     will-change: opacity, transform;
 }
 
 .animate-pulse {
      animation: pulse 2s infinite;
+     will-change: transform, box-shadow;
 }
 
 /* タイピングエフェクト用 */
 .animate-typing {
      overflow: hidden;
-     border-right: 2px solid var(--color-accent);
      white-space: nowrap;
-     margin: 0 auto;
-     animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
+     border-right: 2px solid var(--color-accent);
+     animation: blink 0.75s step-end infinite;
+     will-change: width, border-color;
 }
 
 /* 遅延アニメーション */
@@ -1522,6 +1533,7 @@ a:hover::after {
 /* ホバーアニメーション */
 .animate-hover-scale {
      transition: transform var(--animation-duration-fast) var(--animation-easing);
+     will-change: transform;
 }
 
 .animate-hover-scale:hover {
@@ -1530,6 +1542,7 @@ a:hover::after {
 
 .animate-hover-lift {
      transition: transform var(--animation-duration-fast) var(--animation-easing), box-shadow var(--animation-duration-fast) var(--animation-easing);
+     will-change: transform, box-shadow;
 }
 
 .animate-hover-lift:hover {
@@ -1543,6 +1556,7 @@ a:hover::after {
      transform: translateY(30px);
      transition: opacity var(--animation-duration-normal) var(--animation-easing), 
                  transform var(--animation-duration-normal) var(--animation-easing);
+     will-change: opacity, transform;
 }
 
 .animate-on-scroll.animate-in-view {
@@ -1550,11 +1564,37 @@ a:hover::after {
      transform: translateY(0);
 }
 
+/* スクロールアニメーション初期状態 */
+.animate-not-in-view {
+     opacity: 0;
+     transform: translateY(30px);
+     will-change: opacity, transform;
+}
+
+/* ステガードアニメーション関連 */
+.animate-stagger-item-hidden {
+     opacity: 0;
+     transform: translateY(20px);
+     will-change: opacity, transform;
+}
+
+.animate-stagger-active .animate-stagger-item-hidden {
+     animation: fadeIn var(--animation-duration-normal) var(--animation-easing) forwards;
+}
+
+.animate-stagger-active .animate-stagger-item-hidden:nth-child(1) { animation-delay: calc(var(--animation-delay-base) * 1); }
+.animate-stagger-active .animate-stagger-item-hidden:nth-child(2) { animation-delay: calc(var(--animation-delay-base) * 2); }
+.animate-stagger-active .animate-stagger-item-hidden:nth-child(3) { animation-delay: calc(var(--animation-delay-base) * 3); }
+.animate-stagger-active .animate-stagger-item-hidden:nth-child(4) { animation-delay: calc(var(--animation-delay-base) * 4); }
+.animate-stagger-active .animate-stagger-item-hidden:nth-child(5) { animation-delay: calc(var(--animation-delay-base) * 5); }
+.animate-stagger-active .animate-stagger-item-hidden:nth-child(6) { animation-delay: calc(var(--animation-delay-base) * 6); }
+
 /* ステガードアニメーション用 */
 .animate-stagger > * {
      opacity: 0;
      transform: translateY(20px);
      animation: fadeIn var(--animation-duration-normal) var(--animation-easing) forwards;
+     will-change: opacity, transform;
 }
 
 .animate-stagger > *:nth-child(1) { animation-delay: calc(var(--animation-delay-base) * 1); }
@@ -1563,11 +1603,6 @@ a:hover::after {
 .animate-stagger > *:nth-child(4) { animation-delay: calc(var(--animation-delay-base) * 4); }
 .animate-stagger > *:nth-child(5) { animation-delay: calc(var(--animation-delay-base) * 5); }
 .animate-stagger > *:nth-child(6) { animation-delay: calc(var(--animation-delay-base) * 6); }
-
-/* アニメーション一時停止 */
-.animate-paused {
-     animation-play-state: paused;
-}
 
 /* モーション設定を尊重 */
 @media (prefers-reduced-motion: reduce) {
@@ -1677,48 +1712,58 @@ a:hover::after {
 }
 
 /* ========================================
-    Responsive Design Adjustments
+    Performance Optimization Classes
     ======================================== */
 
-/* Tablet */
-@media (max-width: 768px) {
-     .testimonials__grid,
-     .featured-projects__grid {
-          grid-template-columns: 1fr;
+/* 低パフォーマンス端末用の簡素化されたアニメーション */
+.low-performance .animate-flip-in,
+.low-performance .animate-rotate-in,
+.low-performance .animate-bounce-in {
+     animation: fadeIn var(--animation-duration-fast) ease forwards !important;
+}
+
+.low-performance .animate-stagger > * {
+     animation-delay: 0s !important;
+}
+
+/* スケルトンローディングアニメーション */
+@keyframes loading-skeleton {
+     0% {
+          background-position: -200% 0;
      }
-     
-     .hero__title {
-          font-size: 2rem;
-     }
-     
-     .animate-typing {
-          font-size: 1.8rem;
-     }
-     
-     /* アニメーション遅延を短縮 */
-     :root {
-          --animation-delay-base: 0.05s;
+     100% {
+          background-position: 200% 0;
      }
 }
 
-/* Mobile */
-@media (max-width: 480px) {
-     .hero__title {
-          font-size: 1.5rem;
+/* プリロード時の最適化 */
+.preload * {
+     animation-duration: 0s !important;
+     animation-delay: 0s !important;
+     transition-duration: 0s !important;
+}
+
+/* ========================================
+    Enhanced Mobile Optimizations
+    ======================================== */
+
+/* タッチ操作の最適化 */
+@media (hover: none) and (pointer: coarse) {
+     .animate-hover-scale:hover,
+     .animate-hover-lift:hover {
+          transform: none;
      }
      
-     .animate-typing {
-          font-size: 1.3rem;
+     .portfolio-item:hover,
+     .featured-project-item:hover {
+          transform: none;
+          box-shadow: var(--box-shadow);
      }
      
-     .testimonial-item,
-     .featured-project-item {
-          margin-bottom: var(--spacing-md);
-     }
-     
-     /* モバイルでのアニメーション簡素化 */
-     .animate-flip-in,
-     .animate-rotate-in {
-          animation: fadeIn var(--animation-duration-fast) var(--animation-easing) forwards;
+     /* タッチ端末での代替インタラクション */
+     .portfolio-item:active,
+     .featured-project-item:active {
+          transform: scale(0.98);
+          transition: transform 0.1s ease;
      }
 }
