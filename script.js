@@ -166,50 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && lightbox.classList.contains('lightbox--active')) {
                 closeLightbox();
-            }
-        });
-    }    // フローティングコンタクトボタン（BEMクラス名に更新）
-    function createFloatingContactButton() {
-        const floatingButton = document.createElement('a');
-        floatingButton.href = 'contact.html';
-        floatingButton.className = 'floating-contact-btn';
-        floatingButton.innerHTML = `
-            <span class="floating-contact-btn__icon">📞</span>
-            <span class="floating-contact-btn__text">お問い合わせ</span>
-        `;
-        floatingButton.setAttribute('aria-label', 'お問い合わせページへ移動');
-        document.body.appendChild(floatingButton);
-        
-        // スクロールに応じて表示・非表示
-        let isVisible = false;
-        function toggleFloatingButton() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const shouldShow = scrollTop > 300; // 300px以上スクロールしたら表示
-            
-            if (shouldShow && !isVisible) {
-                floatingButton.classList.add('floating-contact-btn--visible');
-                isVisible = true;
-            } else if (!shouldShow && isVisible) {
-                floatingButton.classList.remove('floating-contact-btn--visible');
-                isVisible = false;
-            }
-        }
-        
-        // スクロールイベントをリスナーに追加（throttle効果のため）
-        let ticking = false;
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                requestAnimationFrame(function() {
-                    toggleFloatingButton();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
-    
-    // ホームページでのみフローティングボタンを表示
-    if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
-        createFloatingContactButton();
+            }        });
     }
 });

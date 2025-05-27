@@ -365,121 +365,6 @@ a:hover::after {
    Hero Section (BEM Structure)
    ======================================== */
 
-/* Scrolling Text Block */
-.scrolling-text {
-    overflow: hidden;
-    background: linear-gradient(135deg, var(--color-background) 0%, var(--color-secondary-bg) 50%, var(--color-background) 100%);
-    color: var(--color-text);
-    padding: calc(var(--spacing-unit) * 1) 0;
-    white-space: nowrap;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-    position: relative;
-    cursor: pointer;
-}
-
-.scrolling-text::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(255, 107, 0, 0.05) 25%, 
-        rgba(255, 107, 0, 0.1) 50%, 
-        rgba(255, 107, 0, 0.05) 75%, 
-        transparent 100%);
-    animation: shimmer 4s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes shimmer {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
-}
-
-.scrolling-text__content {
-    display: inline-block;
-    padding-left: 100%;
-    animation: scroll-left 40s linear infinite;
-    font-size: 2rem;
-    font-weight: bold;
-    transition: animation-duration 0.3s ease;
-}
-
-.scrolling-text:hover .scrolling-text__content {
-    animation-duration: 80s;
-}
-
-.scrolling-text__item {
-    margin-right: calc(var(--spacing-unit) * 4);
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 50%, var(--color-primary) 100%);
-    background-size: 200% 200%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient-shift 3s ease-in-out infinite;
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.scrolling-text__item:hover {
-    transform: scale(1.1);
-    animation-duration: 1s;
-}
-
-.scrolling-text__item:nth-child(even) {
-    animation-delay: 1.5s;
-}
-
-.scrolling-text__item:nth-child(3n) {
-    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 50%, var(--color-text) 100%);
-    background-size: 200% 200%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-@keyframes gradient-shift {
-    0%, 100% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-}
-
-.scrolling-text__icon {
-    font-size: 1.5rem;
-    filter: drop-shadow(0 2px 4px rgba(255, 107, 0, 0.3));
-    animation: icon-bounce 2s ease-in-out infinite;
-    -webkit-text-fill-color: initial;
-    background: none;
-}
-
-.scrolling-text__icon:nth-child(odd) {
-    animation-delay: 1s;
-}
-
-@keyframes icon-bounce {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-3px);
-    }
-}
-
-@keyframes scroll-left {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-100%); }
-}
-
 /* Hero Section Block */
 .hero {
     background-color: var(--color-background);
@@ -1229,105 +1114,6 @@ a:hover::after {
 }
 
 /* ==========================================================================
-   FLOATING CONTACT BUTTON (BEM)
-   ========================================================================== */
-
-.floating-contact-btn {
-  position: fixed;
-  bottom: var(--spacing-lg);
-  right: var(--spacing-lg);
-  background: var(--color-accent);
-  color: var(--color-white);
-  padding: var(--spacing-md);
-  border-radius: 50px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  box-shadow: var(--box-shadow);
-  transition: background-color var(--transition-speed) ease, 
-              box-shadow var(--transition-speed) ease, 
-              transform var(--transition-speed) ease;
-  transform: translateY(100px);
-  opacity: 0;
-  z-index: 1000;
-  will-change: background-color, box-shadow, transform;
-}
-
-.floating-contact-btn--visible {
-  transform: translateY(0);
-  opacity: 1;
-  transition: background-color var(--transition-speed) ease, 
-              box-shadow var(--transition-speed) ease, 
-              transform var(--transition-speed) ease,
-              opacity var(--transition-speed) ease;
-}
-
-.floating-contact-btn:hover {
-  background-color: var(--color-primary);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  transform: translateY(0) scale(1.05);
-}
-
-.floating-contact-btn:active {
-  transform: translateY(0) scale(0.98);
-}
-
-.floating-contact-btn:focus {
-  outline: 3px solid var(--color-white);
-  outline-offset: 2px;
-}
-
-.floating-contact-btn:focus-visible {
-  outline: 3px solid var(--color-white);
-  outline-offset: 2px;
-}
-
-.floating-contact-btn__icon {
-  font-size: var(--font-size-lg);
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-}
-
-.floating-contact-btn__text {
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-}
-
-@media (max-width: 768px) {
-  .floating-contact-btn__text {
-    display: none;
-  }
-  
-  .floating-contact-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    justify-content: center;
-    padding: 0;
-    gap: 0;
-  }
-  
-  .floating-contact-btn__icon {
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-  }
-  
-  .floating-contact-btn:hover {
-    transform: translateY(0) scale(1.1);
-  }
-  
-  .floating-contact-btn:active {
-    transform: translateY(0) scale(0.95);
-  }
-}
-
-/* ==========================================================================
    RESPONSIVE DESIGN - Mobile & Tablet Optimization
    ========================================================================== */
 
@@ -1466,36 +1252,7 @@ a:hover::after {
     .featured-projects {
         padding: calc(var(--spacing-unit) * 2) 0; /* モバイル用パディング */
         margin: calc(var(--spacing-unit) * 3) 0; /* モバイル用マージン */
-    }
-    
-    /* Scrolling Text Small Mobile */
-    .scrolling-text__content {
-        font-size: 1.2rem;
-        animation: scroll-left 30s linear infinite;
-    }
-    
-    .scrolling-text__icon {
-        font-size: 1rem;
-    }
-    
-    .scrolling-text__item {
-        margin-right: calc(var(--spacing-unit) * 2);
-        gap: var(--spacing-xs);
-    }
-      /* Scrolling Text */
-    .scrolling-text__content {
-        font-size: 1.5rem;
-        animation: scroll-left 35s linear infinite;
-    }
-    
-    .scrolling-text__icon {
-        font-size: 1.2rem;
-    }
-    
-    .scrolling-text__item {
-        margin-right: calc(var(--spacing-unit) * 3);
-    }
-    
+    }    
     /* Portfolio Stats */
     .portfolio-item__stats {
         grid-template-columns: 1fr;
@@ -1536,50 +1293,12 @@ a:hover::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
-    }
-      .scrolling-text__content {
-        animation: none;
-        transform: none;
-        position: static;
-        padding-left: 0;
-    }
-    
-    .scrolling-text__item {
-        animation: none;
-        background: var(--color-text);
-        background-clip: initial;
-        -webkit-background-clip: initial;
-        -webkit-text-fill-color: initial;
-    }
-    
-    .scrolling-text__icon {
-        animation: none;
-    }
-    
-    .scrolling-text::before {
-        animation: none;
-        opacity: 0;
-    }
-    
+    }    
     .skip-to-content {
         transition: none;
     }
       .skip-to-content:focus {
-        transform: none;
-    }
-    
-    .floating-contact-btn {
-        transition: none !important;
-    }
-    
-    .floating-contact-btn:hover,
-    .floating-contact-btn:active {
-        transform: translateY(0) !important;
-    }
-    
-    .floating-contact-btn--visible {
-        transition: none !important;
-    }
+        transform: none;    }
 }
 
 /* ==========================================================================
