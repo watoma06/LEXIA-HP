@@ -359,24 +359,111 @@ a:hover::after {
 /* Scrolling Text Block */
 .scrolling-text {
     overflow: hidden;
-    background-color: var(--color-background);
+    background: linear-gradient(135deg, var(--color-background) 0%, var(--color-secondary-bg) 50%, var(--color-background) 100%);
     color: var(--color-text);
-    padding: calc(var(--spacing-unit) * 0.5) 0;
+    padding: calc(var(--spacing-unit) * 1) 0;
     white-space: nowrap;
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
+    position: relative;
+    cursor: pointer;
+}
+
+.scrolling-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 107, 0, 0.05) 25%, 
+        rgba(255, 107, 0, 0.1) 50%, 
+        rgba(255, 107, 0, 0.05) 75%, 
+        transparent 100%);
+    animation: shimmer 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }
 
 .scrolling-text__content {
     display: inline-block;
     padding-left: 100%;
-    animation: scroll-left 30s linear infinite;
+    animation: scroll-left 40s linear infinite;
     font-size: 2rem;
     font-weight: bold;
+    transition: animation-duration 0.3s ease;
+}
+
+.scrolling-text:hover .scrolling-text__content {
+    animation-duration: 80s;
 }
 
 .scrolling-text__item {
-    margin-right: calc(var(--spacing-unit) * 3);
+    margin-right: calc(var(--spacing-unit) * 4);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 50%, var(--color-primary) 100%);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease-in-out infinite;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.scrolling-text__item:hover {
+    transform: scale(1.1);
+    animation-duration: 1s;
+}
+
+.scrolling-text__item:nth-child(even) {
+    animation-delay: 1.5s;
+}
+
+.scrolling-text__item:nth-child(3n) {
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 50%, var(--color-text) 100%);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.scrolling-text__icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 4px rgba(255, 107, 0, 0.3));
+    animation: icon-bounce 2s ease-in-out infinite;
+    -webkit-text-fill-color: initial;
+    background: none;
+}
+
+.scrolling-text__icon:nth-child(odd) {
+    animation-delay: 1s;
+}
+
+@keyframes icon-bounce {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
 }
 
 @keyframes scroll-left {
@@ -1340,8 +1427,7 @@ a:hover::after {
     .skip-to-content:focus {
         top: 4px;
     }
-    
-    /* Typography */
+      /* Typography */
     .hero__title {
         font-size: 2rem;
         line-height: 1.1;
@@ -1351,9 +1437,32 @@ a:hover::after {
         font-size: 1rem;
     }
     
-    /* Scrolling Text */
+    /* Scrolling Text Small Mobile */
+    .scrolling-text__content {
+        font-size: 1.2rem;
+        animation: scroll-left 30s linear infinite;
+    }
+    
+    .scrolling-text__icon {
+        font-size: 1rem;
+    }
+    
+    .scrolling-text__item {
+        margin-right: calc(var(--spacing-unit) * 2);
+        gap: var(--spacing-xs);
+    }
+      /* Scrolling Text */
     .scrolling-text__content {
         font-size: 1.5rem;
+        animation: scroll-left 35s linear infinite;
+    }
+    
+    .scrolling-text__icon {
+        font-size: 1.2rem;
+    }
+    
+    .scrolling-text__item {
+        margin-right: calc(var(--spacing-unit) * 3);
     }
     
     /* Portfolio Stats */
@@ -1397,12 +1506,28 @@ a:hover::after {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
-    .scrolling-text__content {
+      .scrolling-text__content {
         animation: none;
         transform: none;
         position: static;
         padding-left: 0;
+    }
+    
+    .scrolling-text__item {
+        animation: none;
+        background: var(--color-text);
+        background-clip: initial;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+    }
+    
+    .scrolling-text__icon {
+        animation: none;
+    }
+    
+    .scrolling-text::before {
+        animation: none;
+        opacity: 0;
     }
     
     .skip-to-content {
