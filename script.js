@@ -219,4 +219,75 @@ document.addEventListener('DOMContentLoaded', function() {
     }
       // 初期化関数を呼び出し
     initTypingEffect();
+
+    // ===================================
+    // About Page - Tab Navigation Functionality
+    // ===================================
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    if (tabButtons.length > 0 && tabContents.length > 0) {
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetTab = this.getAttribute('data-tab');
+                
+                // Remove active class from all tab buttons
+                tabButtons.forEach(btn => btn.classList.remove('tab-btn--active'));
+                
+                // Add active class to clicked button
+                this.classList.add('tab-btn--active');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.remove('tab-content--active');
+                });
+                
+                // Show target tab content
+                const targetContent = document.getElementById(targetTab);
+                if (targetContent) {
+                    targetContent.classList.add('tab-content--active');
+                }
+                
+                // Update aria attributes for accessibility
+                button.setAttribute('aria-selected', 'true');
+                tabButtons.forEach(btn => {
+                    if (btn !== button) {
+                        btn.setAttribute('aria-selected', 'false');
+                    }
+                });
+            });
+        });
+        
+        // Initialize first tab as active
+        if (tabButtons[0] && tabContents[0]) {
+            tabButtons[0].classList.add('tab-btn--active');
+            tabContents[0].classList.add('tab-content--active');
+            tabButtons[0].setAttribute('aria-selected', 'true');
+            
+            // Set aria-selected to false for other tabs
+            for (let i = 1; i < tabButtons.length; i++) {
+                tabButtons[i].setAttribute('aria-selected', 'false');
+            }
+        }
+        
+        // Keyboard navigation for tabs
+        tabButtons.forEach((button, index) => {
+            button.addEventListener('keydown', function(e) {
+                let targetIndex = index;
+                
+                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    
+                    if (e.key === 'ArrowRight') {
+                        targetIndex = (index + 1) % tabButtons.length;
+                    } else {
+                        targetIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+                    }
+                    
+                    tabButtons[targetIndex].focus();
+                    tabButtons[targetIndex].click();
+                }
+            });
+        });
+    }
 });
