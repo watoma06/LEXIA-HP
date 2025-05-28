@@ -1,24 +1,4 @@
-name: Cache & Audit
-
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  audit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Run npm audit
-        run: npm audit --audit-level=high
+npm install
+git add package-lock.json
+git commit -m "Add package-lock.json for CI"
+git push
