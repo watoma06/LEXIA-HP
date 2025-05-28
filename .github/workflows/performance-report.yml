@@ -1,0 +1,17 @@
+name: Performance & Quality Report
+
+on:
+  pull_request:
+  schedule:
+    - cron: '0 2 * * *'    # 毎日 2:00 にも実行
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci && npm run start &   # ビルド＋起動
+      - uses: treosh/lighthouse-ci-action@9
+        with:
+          url: http://localhost:3000
+          thresholds: '{"performance": 0.9, "accessibility": 0.9}'
