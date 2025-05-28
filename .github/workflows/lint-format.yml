@@ -1,0 +1,17 @@
+name: Lint & Format Check
+
+on:
+  pull_request:
+
+jobs:
+  lint-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Check Prettier Formatting
+        run: npm run format:check
