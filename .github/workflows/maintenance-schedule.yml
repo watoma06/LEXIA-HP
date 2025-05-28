@@ -16,6 +16,6 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           branch: chore/deps-update
-          commit-message: chore: update dependencies
+          commit-message: "chore: update dependencies"
           title: "Monthly dependency update"
           body: "自動メンテナンス: 依存関係の最新化"
