@@ -96,214 +96,868 @@
     <!-- Main Content -->
     <main id="main-content" class="services">
         <div class="services__container">
-            <!-- Page Title & Introduction -->
-            <h2 class="services__title" data-typing data-typing-speed="90">サービス一覧</h2>
-            <p class="services__intro animate-on-scroll">
-                LEXIAが提供するサービス一覧です。<strong>価値をカタチに、共に語り継がれる未来へ。</strong>
-            </p>
+            <!-- ヒーローセクション -->
+            <section class="services__hero animate-on-scroll">
+                <div class="services__hero-content">
+                    <h1 class="services__title" data-typing data-typing-speed="90">プロフェッショナルサービス</h1>
+                    <p class="services__subtitle animate-fade-in animate-delay-1">
+                        最新技術と豊富な経験で、あなたのビジネスを次のステージへ
+                    </p>
+                    <p class="services__intro animate-fade-in animate-delay-2">
+                        WEB制作からブランディング、マーケティング支援まで。<br>
+                        <strong>価値をカタチに、共に語り継がれる未来へ。</strong>
+                    </p>
+                    <div class="services__hero-stats animate-scale-in animate-delay-3">
+                        <div class="hero-stat">
+                            <span class="hero-stat__number">200+</span>
+                            <span class="hero-stat__label">制作実績</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat__number">98%</span>
+                            <span class="hero-stat__label">顧客満足度</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat__number">24時間</span>
+                            <span class="hero-stat__label">平均返信時間</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- タブナビゲーション -->
+            <section class="services__navigation animate-on-scroll">
+                <div class="tab-navigation" role="tablist" aria-label="サービスカテゴリ">
+                    <button class="tab-btn tab-btn--active" 
+                            role="tab" 
+                            aria-selected="true" 
+                            aria-controls="services-overview" 
+                            id="tab-overview">
+                        サービス一覧
+                    </button>
+                    <button class="tab-btn" 
+                            role="tab" 
+                            aria-selected="false" 
+                            aria-controls="pricing-comparison" 
+                            id="tab-pricing">
+                        料金比較
+                    </button>
+                    <button class="tab-btn" 
+                            role="tab" 
+                            aria-selected="false" 
+                            aria-controls="process-flow" 
+                            id="tab-process">
+                        制作フロー
+                    </button>
+                </div>
+            </section>
             
-            <!-- Services Grid -->
-            <div class="services__grid animate-stagger animate-on-scroll">
-                
-                <!-- Service 1: WEBサイト制作 -->
-                <div class="service-item animate-flip-in">
-                    <h3 class="service-item__title">WEBサイト制作</h3>
-                    <div class="service-item__content">
-                        <h4 class="service-item__subtitle">HTML/CSS/JSコーディング</h4>
-                        <p class="service-item__description">
-                            レスポンシブデザイン対応の高品質なコーディングを提供。SEO対策も標準実装。
-                        </p>
-                        
-                        <ul class="service-item__features animate-stagger">
-                            <li class="service-item__feature">レスポンシブデザイン対応</li>
-                            <li class="service-item__feature">SEO対策込み</li>
-                            <li class="service-item__feature">高速表示最適化</li>
-                            <li class="service-item__feature">アクセシビリティ対応</li>
-                        </ul>
-                        
-                        <div class="service-item__pricing">
-                            <p class="service-item__price">
-                                <strong>料金目安：</strong>150,000円〜300,000円
+            <!-- タブコンテンツ1: サービス一覧 -->
+            <div class="tab-content tab-content--active" id="services-overview" role="tabpanel" aria-labelledby="tab-overview">
+                <!-- Services Grid -->
+                <div class="services__grid animate-stagger animate-on-scroll">
+                    
+                    <!-- Service 1: WEBサイト制作 -->
+                    <div class="service-item animate-flip-in">
+                        <div class="service-item__header">
+                            <div class="service-item__icon">🌐</div>
+                            <h3 class="service-item__title">WEBサイト制作</h3>
+                            <div class="service-item__badge service-item__badge--popular">人気No.1</div>
+                        </div>
+                        <div class="service-item__content">
+                            <h4 class="service-item__subtitle">スマートフォン・タブレット・PC全デバイス最適化</h4>
+                            <p class="service-item__description">
+                                最新のHTML5/CSS3技術で構築する高速表示サイト。Google推奨のPageSpeed Score 90以上を保証し、
+                                SEO対策とアクセシビリティにも完全対応いたします。
                             </p>
-                            <p class="service-item__period">
-                                <strong>制作期間：</strong>2〜4週間
-                            </p>
+                            
+                            <ul class="service-item__features animate-stagger">
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    レスポンシブデザイン対応
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    SEO対策・アナリティクス設定
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    PageSpeed Score 90以上保証
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    WCAG準拠アクセシビリティ
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    SSL証明書・セキュリティ対策
+                                </li>
+                            </ul>
+                            
+                            <div class="service-item__pricing">
+                                <div class="price-info">
+                                    <span class="price-label">料金目安</span>
+                                    <span class="price-value">¥150,000〜</span>
+                                </div>
+                                <div class="period-info">
+                                    <span class="period-label">制作期間</span>
+                                    <span class="period-value">2〜4週間</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item__results">
+                                <h5 class="results-title">実績データ</h5>
+                                <div class="results-grid">
+                                    <div class="result-item">
+                                        <span class="result-number">+300%</span>
+                                        <span class="result-label">平均問い合わせ増加率</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-number">-50%</span>
+                                        <span class="result-label">離脱率削減</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Service 2: WEBデザイン -->
-                <div class="service-item">
-                    <h3 class="service-item__title">WEBデザイン</h3>
-                    <div class="service-item__content">
-                        <h4 class="service-item__subtitle">UI/UXデザイン設計</h4>
-                        <p class="service-item__description">
-                            ユーザビリティを重視した、美しく機能的なWEBデザインを制作します。
-                        </p>
-                        
-                        <ul class="service-item__features">
-                            <li class="service-item__feature">ワイヤーフレーム設計</li>
-                            <li class="service-item__feature">デザインカンプ制作</li>
-                            <li class="service-item__feature">プロトタイプ作成</li>
-                            <li class="service-item__feature">ブランドガイドライン</li>
-                        </ul>
-                        
-                        <div class="service-item__pricing">
-                            <p class="service-item__price">
-                                <strong>料金目安：</strong>80,000円〜200,000円
+                    <!-- Service 2: WEBデザイン -->
+                    <div class="service-item">
+                        <div class="service-item__header">
+                            <div class="service-item__icon">🎨</div>
+                            <h3 class="service-item__title">WEBデザイン</h3>
+                        </div>
+                        <div class="service-item__content">
+                            <h4 class="service-item__subtitle">ユーザー体験を重視したUI/UXデザイン設計</h4>
+                            <p class="service-item__description">
+                                ユーザビリティテストに基づく科学的アプローチで、
+                                コンバージョン率向上を実現する美しく機能的なWEBデザインを制作します。
                             </p>
-                            <p class="service-item__period">
-                                <strong>制作期間：</strong>1〜3週間
-                            </p>
+                            
+                            <ul class="service-item__features">
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    ユーザージャーニーマップ設計
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    ワイヤーフレーム・プロトタイプ
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    デザインシステム構築
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    A/Bテスト対応設計
+                                </li>
+                            </ul>
+                            
+                            <div class="service-item__pricing">
+                                <div class="price-info">
+                                    <span class="price-label">料金目安</span>
+                                    <span class="price-value">¥80,000〜</span>
+                                </div>
+                                <div class="period-info">
+                                    <span class="period-label">制作期間</span>
+                                    <span class="period-value">1〜3週間</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item__results">
+                                <h5 class="results-title">実績データ</h5>
+                                <div class="results-grid">
+                                    <div class="result-item">
+                                        <span class="result-number">+180%</span>
+                                        <span class="result-label">コンバージョン率向上</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-number">4.8/5</span>
+                                        <span class="result-label">ユーザビリティスコア</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Service 3: ロゴ・ブランドデザイン -->
-                <div class="service-item">
-                    <h3 class="service-item__title">ロゴ・ブランドデザイン</h3>
-                    <div class="service-item__content">
-                        <h4 class="service-item__subtitle">ブランドアイデンティティ構築</h4>
-                        <p class="service-item__description">
-                            企業の理念と価値を視覚的に表現するロゴデザインと総合的なブランディング。
-                        </p>
-                        
-                        <ul class="service-item__features">
-                            <li class="service-item__feature">ロゴデザイン</li>
-                            <li class="service-item__feature">名刺・パンフレットデザイン</li>
-                            <li class="service-item__feature">ブランドカラー設計</li>
-                            <li class="service-item__feature">使用ガイドライン作成</li>
-                        </ul>
-                        
-                        <div class="service-item__pricing">
-                            <p class="service-item__price">
-                                <strong>料金目安：</strong>50,000円〜150,000円
+                    <!-- Service 3: ロゴ・ブランドデザイン -->
+                    <div class="service-item">
+                        <div class="service-item__header">
+                            <div class="service-item__icon">🏷️</div>
+                            <h3 class="service-item__title">ロゴ・ブランドデザイン</h3>
+                        </div>
+                        <div class="service-item__content">
+                            <h4 class="service-item__subtitle">企業価値を視覚化するブランドアイデンティティ構築</h4>
+                            <p class="service-item__description">
+                                戦略的ブランディングに基づき、企業の理念と価値を効果的に伝える
+                                ロゴデザインと包括的なブランドガイドラインを制作します。
                             </p>
-                            <p class="service-item__period">
-                                <strong>制作期間：</strong>1〜2週間
-                            </p>
+                            
+                            <ul class="service-item__features">
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    ブランド戦略コンサルティング
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    ロゴデザイン（5案まで提案）
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    名刺・封筒・パンフレット
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    ブランドガイドライン作成
+                                </li>
+                            </ul>
+                            
+                            <div class="service-item__pricing">
+                                <div class="price-info">
+                                    <span class="price-label">料金目安</span>
+                                    <span class="price-value">¥50,000〜</span>
+                                </div>
+                                <div class="period-info">
+                                    <span class="period-label">制作期間</span>
+                                    <span class="period-value">1〜2週間</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item__results">
+                                <h5 class="results-title">実績データ</h5>
+                                <div class="results-grid">
+                                    <div class="result-item">
+                                        <span class="result-number">95%</span>
+                                        <span class="result-label">ブランド認知度向上</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-number">100%</span>
+                                        <span class="result-label">クライアント満足度</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Service 4: 保守・運用サポート -->
-                <div class="service-item">
-                    <h3 class="service-item__title">保守・運用サポート</h3>
-                    <div class="service-item__content">
-                        <h4 class="service-item__subtitle">継続的なWEBサイトメンテナンス</h4>
-                        <p class="service-item__description">
-                            サイト公開後の更新作業、セキュリティ対策、パフォーマンス改善を継続サポート。
-                        </p>
-                        
-                        <ul class="service-item__features">
-                            <li class="service-item__feature">定期的なセキュリティ更新</li>
-                            <li class="service-item__feature">コンテンツ更新作業</li>
-                            <li class="service-item__feature">パフォーマンス監視</li>
-                            <li class="service-item__feature">技術サポート</li>
-                        </ul>
-                        
-                        <div class="service-item__pricing">
-                            <p class="service-item__price">
-                                <strong>料金目安：</strong>月額10,000円〜30,000円
+                    <!-- Service 4: 保守・運用サポート -->
+                    <div class="service-item">
+                        <div class="service-item__header">
+                            <div class="service-item__icon">🛡️</div>
+                            <h3 class="service-item__title">保守・運用サポート</h3>
+                        </div>
+                        <div class="service-item__content">
+                            <h4 class="service-item__subtitle">24時間監視による安心の継続サポート</h4>
+                            <p class="service-item__description">
+                                サイト公開後も安心してご利用いただけるよう、セキュリティ監視、
+                                パフォーマンス最適化、コンテンツ更新を継続的にサポートいたします。
                             </p>
-                            <p class="service-item__period">
-                                <strong>対応時間：</strong>平日9:00-18:00
-                            </p>
+                            
+                            <ul class="service-item__features">
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    24時間セキュリティ監視
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    定期バックアップ（日次/週次）
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    コンテンツ更新代行
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    アクセス解析レポート
+                                </li>
+                            </ul>
+                            
+                            <div class="service-item__pricing">
+                                <div class="price-info">
+                                    <span class="price-label">料金目安</span>
+                                    <span class="price-value">月額¥10,000〜</span>
+                                </div>
+                                <div class="period-info">
+                                    <span class="period-label">対応時間</span>
+                                    <span class="period-value">平日9:00-18:00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item__results">
+                                <h5 class="results-title">実績データ</h5>
+                                <div class="results-grid">
+                                    <div class="result-item">
+                                        <span class="result-number">99.9%</span>
+                                        <span class="result-label">稼働率</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-number">2時間</span>
+                                        <span class="result-label">平均対応時間</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Service 5: ドローン撮影 -->
-                <div class="service-item">
-                    <h3 class="service-item__title">ドローン撮影</h3>
-                    <div class="service-item__content">
-                        <h4 class="service-item__subtitle">空撮による魅力的な映像制作</h4>
-                        <p class="service-item__description">
-                            企業紹介動画、不動産物件、イベント記録など、ドローンによる高品質な空撮サービス。
-                        </p>
-                        
-                        <ul class="service-item__features">
-                            <li class="service-item__feature">4K高画質撮影</li>
-                            <li class="service-item__feature">編集・加工込み</li>
-                            <li class="service-item__feature">法規制対応済み</li>
-                            <li class="service-item__feature">各種用途に対応</li>
-                        </ul>
-                        
-                        <div class="service-item__pricing">
-                            <p class="service-item__price">
-                                <strong>料金目安：</strong>30,000円〜80,000円
+                    <!-- Service 5: ドローン撮影 -->
+                    <div class="service-item">
+                        <div class="service-item__header">
+                            <div class="service-item__icon">📹</div>
+                            <h3 class="service-item__title">ドローン撮影</h3>
+                        </div>
+                        <div class="service-item__content">
+                            <h4 class="service-item__subtitle">4K高画質による魅力的な空撮映像制作</h4>
+                            <p class="service-item__description">
+                                プロ仕様のドローンを使用し、企業紹介、不動産物件、イベント記録など、
+                                法規制に完全対応した安全で高品質な空撮サービスを提供します。
                             </p>
-                            <p class="service-item__period">
-                                <strong>撮影時間：</strong>半日〜1日
-                            </p>
+                            
+                            <ul class="service-item__features">
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    4K高画質撮影・編集
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    航空法完全対応
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    カラーグレーディング
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    各種フォーマット対応
+                                </li>
+                            </ul>
+                            
+                            <div class="service-item__pricing">
+                                <div class="price-info">
+                                    <span class="price-label">料金目安</span>
+                                    <span class="price-value">¥30,000〜</span>
+                                </div>
+                                <div class="period-info">
+                                    <span class="period-label">撮影時間</span>
+                                    <span class="period-value">半日〜1日</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item__results">
+                                <h5 class="results-title">実績データ</h5>
+                                <div class="results-grid">
+                                    <div class="result-item">
+                                        <span class="result-number">50+</span>
+                                        <span class="result-label">撮影実績</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-number">0件</span>
+                                        <span class="result-label">事故・違反</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Service 6: SNS運用支援 -->
-                <div class="service-item">
-                    <h3 class="service-item__title">SNS運用支援</h3>
-                    <div class="service-item__content">
-                        <h4 class="service-item__subtitle">効果的なSNSマーケティング</h4>
-                        <p class="service-item__description">
-                            Instagram、Facebook、TwitterなどのSNS運用戦略立案から投稿代行まで。
+                    <!-- Service 6: SNS運用支援 -->
+                    <div class="service-item">
+                        <div class="service-item__header">
+                            <div class="service-item__icon">📱</div>
+                            <h3 class="service-item__title">SNS運用支援</h3>
+                        </div>
+                        <div class="service-item__content">
+                            <h4 class="service-item__subtitle">データドリブンな効果的SNSマーケティング</h4>
+                            <p class="service-item__description">
+                                Instagram、Facebook、X（Twitter）等のSNS運用戦略立案から
+                                コンテンツ制作、投稿代行、効果測定まで包括的にサポートします。
+                            </p>
+                            
+                            <ul class="service-item__features">
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    戦略立案・競合分析
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    コンテンツ企画・制作
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    投稿代行・コメント対応
+                                </li>
+                                <li class="service-item__feature">
+                                    <span class="feature-icon">✓</span>
+                                    月次レポート・改善提案
+                                </li>
+                            </ul>
+                            
+                            <div class="service-item__pricing">
+                                <div class="price-info">
+                                    <span class="price-label">料金目安</span>
+                                    <span class="price-value">月額¥20,000〜</span>
+                                </div>
+                                <div class="period-info">
+                                    <span class="period-label">投稿頻度</span>
+                                    <span class="period-value">週3-5回</span>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item__results">
+                                <h5 class="results-title">実績データ</h5>
+                                <div class="results-grid">
+                                    <div class="result-item">
+                                        <span class="result-number">+250%</span>
+                                        <span class="result-label">フォロワー増加率</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-number">4.2%</span>
+                                        <span class="result-label">平均エンゲージメント率</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- タブコンテンツ2: 料金比較 -->
+            <div class="tab-content" id="pricing-comparison" role="tabpanel" aria-labelledby="tab-pricing">
+                <div class="pricing-section animate-on-scroll">
+                    <h3 class="pricing-section__title animate-fade-in">料金比較表</h3>
+                    <p class="pricing-section__desc animate-fade-in animate-delay-1">
+                        透明性の高い料金体系で、お客様に安心してご利用いただけます
+                    </p>
+                    
+                    <div class="pricing-table animate-scale-in animate-delay-2">
+                        <div class="pricing-header">
+                            <div class="pricing-cell pricing-cell--header">サービス</div>
+                            <div class="pricing-cell pricing-cell--header">ライト</div>
+                            <div class="pricing-cell pricing-cell--header pricing-cell--popular">スタンダード</div>
+                            <div class="pricing-cell pricing-cell--header">プレミアム</div>
+                        </div>
+                        
+                        <div class="pricing-row">
+                            <div class="pricing-cell pricing-cell--service">
+                                <div class="service-name">WEBサイト制作</div>
+                                <div class="service-desc">コーポレートサイト</div>
+                            </div>
+                            <div class="pricing-cell">
+                                <div class="price">¥150,000〜</div>
+                                <div class="features">
+                                    <span>5ページまで</span>
+                                    <span>レスポンシブ対応</span>
+                                    <span>基本SEO対策</span>
+                                </div>
+                            </div>
+                            <div class="pricing-cell pricing-cell--highlight">
+                                <div class="price">¥250,000〜</div>
+                                <div class="features">
+                                    <span>10ページまで</span>
+                                    <span>CMS導入</span>
+                                    <span>高度SEO対策</span>
+                                    <span>アナリティクス設定</span>
+                                </div>
+                            </div>
+                            <div class="pricing-cell">
+                                <div class="price">¥400,000〜</div>
+                                <div class="features">
+                                    <span>20ページまで</span>
+                                    <span>EC機能</span>
+                                    <span>多言語対応</span>
+                                    <span>高速化最適化</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-row">
+                            <div class="pricing-cell pricing-cell--service">
+                                <div class="service-name">WEBデザイン</div>
+                                <div class="service-desc">UI/UXデザイン</div>
+                            </div>
+                            <div class="pricing-cell">
+                                <div class="price">¥80,000〜</div>
+                                <div class="features">
+                                    <span>基本デザイン</span>
+                                    <span>3ページまで</span>
+                                </div>
+                            </div>
+                            <div class="pricing-cell pricing-cell--highlight">
+                                <div class="price">¥150,000〜</div>
+                                <div class="features">
+                                    <span>カスタムデザイン</span>
+                                    <span>8ページまで</span>
+                                    <span>プロトタイプ</span>
+                                </div>
+                            </div>
+                            <div class="pricing-cell">
+                                <div class="price">¥250,000〜</div>
+                                <div class="features">
+                                    <span>ブランドデザイン</span>
+                                    <span>15ページまで</span>
+                                    <span>デザインシステム</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-row">
+                            <div class="pricing-cell pricing-cell--service">
+                                <div class="service-name">ロゴデザイン</div>
+                                <div class="service-desc">ブランドアイデンティティ</div>
+                            </div>
+                            <div class="pricing-cell">
+                                <div class="price">¥50,000〜</div>
+                                <div class="features">
+                                    <span>ロゴ3案</span>
+                                    <span>基本データ</span>
+                                </div>
+                            </div>
+                            <div class="pricing-cell pricing-cell--highlight">
+                                <div class="price">¥100,000〜</div>
+                                <div class="features">
+                                    <span>ロゴ5案</span>
+                                    <span>名刺デザイン</span>
+                                    <span>ガイドライン</span>
+                                </div>
+                            </div>
+                            <div class="pricing-cell">
+                                <div class="price">¥180,000〜</div>
+                                <div class="features">
+                                    <span>包括ブランディング</span>
+                                    <span>各種印刷物</span>
+                                    <span>ブランドブック</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-notes animate-fade-in animate-delay-3">
+                        <h4 class="notes-title">料金に含まれるもの</h4>
+                        <div class="notes-grid">
+                            <div class="note-item">
+                                <span class="note-icon">✓</span>
+                                <span>初回打ち合わせ（最大2回）</span>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-icon">✓</span>
+                                <span>修正対応（回数制限内）</span>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-icon">✓</span>
+                                <span>納品後1ヶ月間サポート</span>
+                            </div>
+                            <div class="note-item">
+                                <span class="note-icon">✓</span>
+                                <span>各種ファイル形式での納品</span>
+                            </div>
+                        </div>
+                        
+                        <p class="notes-disclaimer">
+                            ※ 料金は案件の規模や要件により変動いたします。まずはお気軽にお見積もりをご依頼ください。<br>
+                            ※ 愛知県内のお客様は直接打ち合わせも可能です。その他地域はオンライン対応となります。
                         </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- タブコンテンツ3: 制作フロー -->
+            <div class="tab-content" id="process-flow" role="tabpanel" aria-labelledby="tab-process">
+                <div class="process-section animate-on-scroll">
+                    <h3 class="process-section__title animate-fade-in">制作フロー</h3>
+                    <p class="process-section__desc animate-fade-in animate-delay-1">
+                        お客様と密にコミュニケーションを取りながら、品質の高い成果物をお届けします
+                    </p>
+                    
+                    <div class="process-flow animate-stagger animate-delay-2">
+                        <div class="process-step animate-slide-in-left">
+                            <div class="step-number">01</div>
+                            <div class="step-content">
+                                <h4 class="step-title">お問い合わせ・ヒアリング</h4>
+                                <p class="step-description">
+                                    まずはお気軽にお問い合わせください。ご要望や目的、予算感などを詳しくお聞きし、
+                                    最適なプランをご提案いたします。
+                                </p>
+                                <div class="step-details">
+                                    <span class="detail-item">📞 初回相談無料</span>
+                                    <span class="detail-item">⏱️ 所要時間: 30-60分</span>
+                                </div>
+                            </div>
+                        </div>
                         
-                        <ul class="service-item__features">
-                            <li class="service-item__feature">SNS戦略立案</li>
-                            <li class="service-item__feature">コンテンツ企画・制作</li>
-                            <li class="service-item__feature">投稿代行</li>
-                            <li class="service-item__feature">効果測定・改善</li>
-                        </ul>
+                        <div class="process-step animate-slide-in-right">
+                            <div class="step-number">02</div>
+                            <div class="step-content">
+                                <h4 class="step-title">企画・設計</h4>
+                                <p class="step-description">
+                                    ヒアリング内容を基に、サイト構成やデザインコンセプトを企画。
+                                    ワイヤーフレームや仕様書を作成し、お客様と詳細を詰めていきます。
+                                </p>
+                                <div class="step-details">
+                                    <span class="detail-item">📋 仕様書作成</span>
+                                    <span class="detail-item">⏱️ 期間: 3-5日</span>
+                                </div>
+                            </div>
+                        </div>
                         
-                        <div class="service-item__pricing">
-                            <p class="service-item__price">
-                                <strong>料金目安：</strong>月額20,000円〜50,000円
-                            </p>
-                            <p class="service-item__period">
-                                <strong>投稿頻度：</strong>週3-5回
-                            </p>
+                        <div class="process-step animate-slide-in-left">
+                            <div class="step-number">03</div>
+                            <div class="step-content">
+                                <h4 class="step-title">お見積もり・契約</h4>
+                                <p class="step-description">
+                                    詳細な要件が確定次第、正式なお見積もりと制作スケジュールをご提示。
+                                    ご納得いただけましたら、契約を締結し制作開始となります。
+                                </p>
+                                <div class="step-details">
+                                    <span class="detail-item">💰 詳細見積もり</span>
+                                    <span class="detail-item">📅 スケジュール確定</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step animate-slide-in-right">
+                            <div class="step-number">04</div>
+                            <div class="step-content">
+                                <h4 class="step-title">デザイン制作</h4>
+                                <p class="step-description">
+                                    ブランドコンセプトに基づき、デザインカンプを制作。
+                                    お客様からのフィードバックを反映しながら、最終デザインを確定します。
+                                </p>
+                                <div class="step-details">
+                                    <span class="detail-item">🎨 デザインカンプ</span>
+                                    <span class="detail-item">🔄 修正対応3回まで</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step animate-slide-in-left">
+                            <div class="step-number">05</div>
+                            <div class="step-content">
+                                <h4 class="step-title">コーディング・開発</h4>
+                                <p class="step-description">
+                                    確定したデザインを基に、レスポンシブ対応のコーディングを実施。
+                                    SEO対策やアクセシビリティにも配慮した実装を行います。
+                                </p>
+                                <div class="step-details">
+                                    <span class="detail-item">💻 レスポンシブ対応</span>
+                                    <span class="detail-item">🔍 SEO最適化</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step animate-slide-in-right">
+                            <div class="step-number">06</div>
+                            <div class="step-content">
+                                <h4 class="step-title">テスト・納品</h4>
+                                <p class="step-description">
+                                    各種ブラウザでの動作確認、表示チェックを実施後、本番環境への公開。
+                                    納品後も1ヶ月間の無料サポートをご提供いたします。
+                                </p>
+                                <div class="step-details">
+                                    <span class="detail-item">✅ 動作確認</span>
+                                    <span class="detail-item">🛡️ 1ヶ月サポート</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-features animate-fade-in animate-delay-4">
+                        <h4 class="features-title">LEXIAの制作フロー特徴</h4>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">💬</div>
+                                <h5 class="feature-name">密なコミュニケーション</h5>
+                                <p class="feature-desc">進捗状況を定期的にご報告し、お客様との認識齟齬を防ぎます</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">⚡</div>
+                                <h5 class="feature-name">スピード対応</h5>
+                                <p class="feature-desc">ご質問やご要望には24時間以内に必ずご返答いたします</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🔄</div>
+                                <h5 class="feature-name">柔軟な修正対応</h5>
+                                <p class="feature-desc">制作途中での仕様変更にも可能な限り対応いたします</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">📊</div>
+                                <h5 class="feature-name">データ重視</h5>
+                                <p class="feature-desc">アクセス解析データに基づく改善提案も行います</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
             </div>
 
             <!-- Service Flow & Notes -->
-            <div class="services__note">
-                <h3 class="services__note-title">ご利用の流れ</h3>
-                <ol class="services__flow">
-                    <li class="services__flow-item">
-                        <strong>お問い合わせ</strong> - まずはお気軽にご相談ください
-                    </li>
-                    <li class="services__flow-item">
-                        <strong>ヒアリング</strong> - ご要望や目的を詳しくお聞きします
-                    </li>
-                    <li class="services__flow-item">
-                        <strong>お見積もり</strong> - 詳細な料金と制作期間をご提示
-                    </li>
-                    <li class="services__flow-item">
-                        <strong>契約・制作開始</strong> - ご納得いただけましたら制作開始
-                    </li>
-                    <li class="services__flow-item">
-                        <strong>納品・アフターサポート</strong> - 継続的なサポートも可能
-                    </li>
-                </ol>
+            <div class="services__note animate-on-scroll">
+            <!-- お客様の声セクション -->
+            <section class="services__testimonials animate-on-scroll">
+                <h3 class="testimonials-title animate-fade-in">お客様の声</h3>
+                <p class="testimonials-subtitle animate-fade-in animate-delay-1">
+                    LEXIAのサービスをご利用いただいたお客様からの生の声をご紹介します
+                </p>
                 
-                <p class="services__note-text">
-                    <strong>※ 料金は案件の規模や要件により変動いたします。まずはお気軽にお見積もりをご依頼ください。</strong>
-                </p>
-                <p class="services__note-text">
-                    <strong>※ 愛知県内のお客様は直接打ち合わせも可能です。その他地域はオンライン対応となります。</strong>
-                </p>
-            </div>
+                <div class="testimonials-grid animate-stagger animate-delay-2">
+                    <div class="testimonial-card animate-scale-in">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <span class="star">★★★★★</span>
+                                <span class="rating-text">5.0</span>
+                            </div>
+                            <p class="testimonial-text">
+                                「制作期間が短いにも関わらず、期待を上回る品質のサイトを制作していただきました。
+                                SEO対策の効果で、公開から3ヶ月で検索流入が3倍に増加しました。」
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <span class="author-name">田中様</span>
+                                    <span class="author-company">製造業 / 代表取締役</span>
+                                </div>
+                                <div class="testimonial-results">
+                                    <span class="result">検索流入 +300%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card animate-scale-in">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <span class="star">★★★★★</span>
+                                <span class="rating-text">5.0</span>
+                            </div>
+                            <p class="testimonial-text">
+                                「ロゴデザインから名刺、ウェブサイトまで一貫してお願いしました。
+                                ブランドコンセプトを的確に表現していただき、お客様からの評判も上々です。」
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <span class="author-name">佐藤様</span>
+                                    <span class="author-company">美容サロン / オーナー</span>
+                                </div>
+                                <div class="testimonial-results">
+                                    <span class="result">ブランド認知度 +250%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card animate-scale-in">
+                        <div class="testimonial-content">
+                            <div class="testimonial-rating">
+                                <span class="star">★★★★★</span>
+                                <span class="rating-text">5.0</span>
+                            </div>
+                            <p class="testimonial-text">
+                                「保守運用サポートが非常に充実しており、安心してサイト運営できています。
+                                月次レポートで改善点も提案していただき、CVR向上に繋がっています。」
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <span class="author-name">山田様</span>
+                                    <span class="author-company">EC事業 / マーケティング責任者</span>
+                                </div>
+                                <div class="testimonial-results">
+                                    <span class="result">CVR +180%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- よくある質問セクション -->
+            <section class="services__faq animate-on-scroll">
+                <h3 class="faq-title animate-fade-in">よくある質問</h3>
+                
+                <div class="faq-list animate-stagger animate-delay-1">
+                    <div class="faq-item animate-fade-in">
+                        <div class="faq-question">
+                            <span class="faq-icon">Q</span>
+                            <span class="question-text">制作期間はどのくらいかかりますか？</span>
+                        </div>
+                        <div class="faq-answer">
+                            <span class="faq-icon">A</span>
+                            <span class="answer-text">
+                                プロジェクトの規模により異なりますが、コーポレートサイト（5-10ページ）の場合、
+                                企画から納品まで約2-4週間が目安となります。
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item animate-fade-in">
+                        <div class="faq-question">
+                            <span class="faq-icon">Q</span>
+                            <span class="question-text">途中で仕様変更は可能ですか？</span>
+                        </div>
+                        <div class="faq-answer">
+                            <span class="faq-icon">A</span>
+                            <span class="answer-text">
+                                デザイン確定前でしたら可能です。ただし、大幅な変更の場合は
+                                追加料金が発生する場合がございます。事前にご相談ください。
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item animate-fade-in">
+                        <div class="faq-question">
+                            <span class="faq-icon">Q</span>
+                            <span class="question-text">遠方からの依頼も可能ですか？</span>
+                        </div>
+                        <div class="faq-answer">
+                            <span class="faq-icon">A</span>
+                            <span class="answer-text">
+                                はい、全国対応しております。オンライン会議ツールを使用して
+                                密にコミュニケーションを取りながら制作を進めます。
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item animate-fade-in">
+                        <div class="faq-question">
+                            <span class="faq-icon">Q</span>
+                            <span class="question-text">保守・運用サポートの内容を教えてください</span>
+                        </div>
+                        <div class="faq-answer">
+                            <span class="faq-icon">A</span>
+                            <span class="answer-text">
+                                定期的なセキュリティ更新、バックアップ、コンテンツ更新代行、
+                                月次アクセス解析レポート、技術サポートなどを提供しています。
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- Call to Action -->
-            <div class="services__cta">
-                <h3 class="services__cta-title">まずはお気軽にご相談ください</h3>
-                <p class="services__cta-text">プロジェクトの規模に関わらず、丁寧にサポートいたします。</p>
-                <a href="contact.html" class="btn btn--secondary">お見積もり・ご相談はこちら</a>
-            </div>
+            <section class="services__cta animate-on-scroll">
+                <div class="cta-card animate-bounce-in">
+                    <h3 class="cta-card__title">プロジェクトを始めませんか？</h3>
+                    <p class="cta-card__desc">
+                        あなたのビジネスを次のステージに押し上げる、
+                        プロフェッショナルなWEBソリューションをご提供します。
+                    </p>
+                    <div class="cta-stats">
+                        <div class="cta-stat">
+                            <span class="stat-number">初回相談</span>
+                            <span class="stat-label">完全無料</span>
+                        </div>
+                        <div class="cta-stat">
+                            <span class="stat-number">24時間以内</span>
+                            <span class="stat-label">お見積もり回答</span>
+                        </div>
+                        <div class="cta-stat">
+                            <span class="stat-number">1ヶ月間</span>
+                            <span class="stat-label">アフターサポート</span>
+                        </div>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="contact.html" class="btn btn--primary btn--large animate-hover-scale">
+                            無料相談・お見積もり
+                        </a>
+                        <a href="portfolio.html" class="btn btn--secondary btn--large animate-hover-scale">
+                            制作実績を見る
+                        </a>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
     

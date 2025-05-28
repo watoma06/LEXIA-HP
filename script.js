@@ -218,10 +218,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
       // 初期化関数を呼び出し
-    initTypingEffect();
-
-    // ===================================
-    // About Page - Tab Navigation Functionality
+    initTypingEffect();    // ===================================
+    // Services & About Page - Tab Navigation Functionality
     // ===================================
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
@@ -229,32 +227,43 @@ document.addEventListener('DOMContentLoaded', function() {
     if (tabButtons.length > 0 && tabContents.length > 0) {
         tabButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const targetTab = this.getAttribute('data-tab');
+                // Services.htmlのaria-controls属性をチェック
+                const ariaControls = this.getAttribute('aria-controls');
+                const dataTab = this.getAttribute('data-tab');
+                const targetId = ariaControls || dataTab;
                 
                 // Remove active class from all tab buttons
-                tabButtons.forEach(btn => btn.classList.remove('tab-btn--active'));
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('tab-btn--active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
                 
                 // Add active class to clicked button
                 this.classList.add('tab-btn--active');
+                this.setAttribute('aria-selected', 'true');
                 
                 // Hide all tab contents
                 tabContents.forEach(content => {
                     content.classList.remove('tab-content--active');
+                    content.setAttribute('aria-hidden', 'true');
                 });
                 
                 // Show target tab content
-                const targetContent = document.getElementById(targetTab);
+                const targetContent = document.getElementById(targetId);
                 if (targetContent) {
                     targetContent.classList.add('tab-content--active');
+                    targetContent.setAttribute('aria-hidden', 'false');
+                    
+                    // スムーズなアニメーション
+                    targetContent.style.opacity = '0';
+                    targetContent.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        targetContent.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                        targetContent.style.opacity = '1';
+                        targetContent.style.transform = 'translateY(0)';
+                    }, 50);
                 }
-                
-                // Update aria attributes for accessibility
-                button.setAttribute('aria-selected', 'true');
-                tabButtons.forEach(btn => {
-                    if (btn !== button) {
-                        btn.setAttribute('aria-selected', 'false');
-                    }
-                });
             });
         });
         
@@ -286,8 +295,138 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     tabButtons[targetIndex].focus();
                     tabButtons[targetIndex].click();
+                } else if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
                 }
             });
         });
+    }
+
+    // ===================================
+    // FAQ アコーディオン機能
+    // ===================================
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
+        
+        if (question && answer) {
+            question.addEventListener('click', function() {
+                const isOpen = item.classList.contains('faq-item--open');
+                
+                // Close all other FAQ items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('faq-item--open');
+                        const otherAnswer = otherItem.querySelector('.faq-answer');
+                        const otherIcon = otherItem.querySelector('.faq-icon');
+                        if (otherAnswer) otherAnswer.style.maxHeight = null;
+                        if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    }
+                });
+                
+                // Toggle current item
+                if (!isOpen) {
+                    item.classList.add('faq-item--open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    if (icon) icon.style.transform = 'rotate(45deg)';
+                    question.setAttribute('aria-expanded', 'true');
+                } else {
+                    item.classList.remove('faq-item--open');
+                    answer.style.maxHeight = null;
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                    question.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Keyboard accessibility
+            question.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        }
+    });
+
+    // ===================================
+    // スクロールアニメーション
+    // ===================================
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    
+    if (animatedElements.length > 0) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-visible');
+                    
+                    // Stagger child animations
+                    const children = entry.target.querySelectorAll('.animate-child, .service-item, .testimonial-card');
+                    children.forEach((child, index) => {
+                        setTimeout(() => {
+                            child.classList.add('animate-visible');
+                        }, index * 150);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+    // ===================================
+    // カウントアップアニメーション
+    // ===================================
+    const statNumbers = document.querySelectorAll('.hero-stat__number');
+    
+    if (statNumbers.length > 0) {
+        const statObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    animateNumber(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statNumbers.forEach(el => {
+            statObserver.observe(el);
+        });
+    }
+
+    function animateNumber(element) {
+        const text = element.textContent;
+        const match = text.match(/(\d+)/);
+        
+        if (!match) return;
+        
+        const number = parseInt(match[1]);
+        const suffix = text.replace(match[1], '');
+        const duration = 2000;
+        const steps = 60;
+        const increment = number / steps;
+        
+        let current = 0;
+        const interval = setInterval(() => {
+            current += increment;
+            
+            if (current >= number) {
+                current = number;
+                clearInterval(interval);
+            }
+            
+            element.textContent = Math.floor(current) + suffix;
+        }, duration / steps);
     }
 });
