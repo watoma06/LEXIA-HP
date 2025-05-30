@@ -12,13 +12,47 @@ LEXIA（WEB制作会社）のコーポレートサイト開発プロジェクト
 LEXIA-HP/
 ├── index.html          # トップページ
 ├── about.html          # 会社概要
-├── services.html       # サービス一覧（完成済み）
+├── services.html       # サービス一覧（完成済み + 料金計算機統合）
 ├── portfolio.html      # 制作実績
 ├── contact.html        # お問い合わせ
 ├── style.css          # メインCSS
 ├── script.js          # メインJavaScript
+├── lexia-price-calculator.js # 料金計算機統合モジュール（CSS+JS統合）
+├── test-calculator.html # 料金計算機テストページ
 └── description/       # プロジェクト文書
 ```
+
+---
+
+## 🚀 新機能: 統合料金計算機
+
+### 概要
+services.htmlの料金比較タブに**リアルタイム料金計算機**を統合しました。
+
+### 技術仕様
+- **オールインワン**: JavaScript + CSS統合モジュール
+- **WebAssembly不要**: Pure JavaScript実装で高速動作
+- **デザイン**: 既存サイトとシームレス統合
+- **レスポンシブ**: 全デバイス対応
+
+### 機能
+- ✅ リアルタイム料金計算（遅延なし）
+- ✅ 複数サービス選択・組み合わせ
+- ✅ 割引計算（複数オプション、新規顧客）
+- ✅ 制作期間見積もり
+- ✅ お問い合わせフォーム連携
+- ✅ 計算結果保存機能
+
+### 使用方法
+1. **ファイル配置**: `lexia-price-calculator.js`を読み込むだけ
+2. **初期化**: 自動初期化（HTMLに`id="price-calculator"`の要素が必要）
+3. **テスト**: `test-calculator.html`で単体テスト可能
+
+### ファイル統合メリット
+- ✅ **簡単導入**: 1ファイルのみで完全動作
+- ✅ **依存関係なし**: WebAssemblyやGo環境不要
+- ✅ **メンテナンス性**: コード管理が簡単
+- ✅ **パフォーマンス**: 軽量で高速動作
 
 ---
 
