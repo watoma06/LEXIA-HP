@@ -1,0 +1,59 @@
+/* ========================================
+    CSS Variables (Custom Properties)
+    ======================================== */
+:root {
+     /* Typography Variables */
+     --font-primary: 'Noto Sans JP', sans-serif;
+     --font-heading: 'Montserrat', sans-serif;
+     
+     --font-size-xs: 0.75rem;
+     --font-size-sm: 0.875rem;
+     --font-size-md: 1rem;
+     --font-size-lg: 1.25rem;
+     --font-size-xl: 1.75rem;
+     --font-size-base: 1rem;
+     --font-size-small: 0.875rem;
+     --font-size-large: 1.125rem;
+     --font-size-h1: 2.5rem;
+     --font-size-h2: 2rem;
+     --font-size-h3: 1.5rem;
+     
+     /* Color Variables */
+     --color-text: #000000;
+     --color-background: #ffffff;
+     --color-border: #eeeeee;
+     --color-accent: #FF6B00;
+     --color-secondary-bg: #f9f9f9;
+     --color-primary: #333333;
+     --color-muted: #666666;
+     --color-white: #ffffff;
+     --color-dark: #000000;
+     --color-accent-light: rgba(255, 107, 0, 0.1);
+     
+     /* Layout Variables */
+     --container-width: 1200px;
+     --max-width: 1200px;
+     --border-radius: 0.375rem;
+     --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+     
+     /* Spacing Variables */
+     --spacing-unit: 0.9375rem;
+     --spacing-xs: 0.46875rem;
+     --spacing-sm: 0.65625rem;
+     --spacing-md: 0.9375rem;
+     --spacing-lg: 1.3125rem;
+     --spacing-xl: 1.6875rem;
+     --spacing-xxl: 2.25rem;
+     --section-padding: 4.5rem 0;
+     
+     /* Transition Variables */
+     --transition-base: 0.2s ease-in-out;
+     --transition-slow: 0.3s ease;
+     --transition-speed: 0.2s;     /* Animation Variables */
+     --animation-duration-fast: 0.3s;
+     --animation-duration-normal: 0.6s;
+     --animation-duration-slow: 0.9s;
+     --animation-delay-base: 0.1s;
+     --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+     --animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}

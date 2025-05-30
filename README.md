@@ -15,7 +15,12 @@ LEXIA-HP/
 ├── services.html       # サービス一覧（完成済み + 料金計算機統合）
 ├── portfolio.html      # 制作実績
 ├── contact.html        # お問い合わせ
-├── style.css          # メインCSS
+├── styles/            # CSSファイル（機能別分散）
+│   ├── main.css       # メイン統合CSS
+│   ├── base/          # ベーススタイル
+│   ├── components/    # コンポーネント
+│   ├── pages/         # ページ別スタイル
+│   └── utils/         # ユーティリティ
 ├── script.js          # メインJavaScript
 ├── lexia-price-calculator.js # 料金計算機統合モジュール（CSS+JS統合）
 ├── test-calculator.html # 料金計算機テストページ
