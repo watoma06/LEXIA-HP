@@ -1104,19 +1104,60 @@ class LEXIAPriceCalculator {
 document.addEventListener('DOMContentLoaded', () => {
     // 料金計算機要素を探す
     const calculatorElement = document.getElementById('price-calculator');
+    
     if (calculatorElement) {
-        // グローバルインスタンスを作成
-        window.lexiaPriceCalculator = new LEXIAPriceCalculator(calculatorElement);
-        window.lexiaPriceCalculator.init().catch(error => {
-            console.error('料金計算機の初期化に失敗しました:', error);
-            calculatorElement.innerHTML = `
-                <div class="calculator-error">
-                    <h3>料金計算機の読み込みに失敗しました</h3>
-                    <p>エラー: ${error.message}</p>
-                    <p>お手数ですが、お問い合わせフォームからご相談ください。</p>
-                </div>
-            `;
-        });
+        // 料金比較タブがアクティブになったときに初期化
+        const pricingTab = document.getElementById('tab-pricing');
+        
+        if (pricingTab) {
+            // タブクリック時の初期化
+            pricingTab.addEventListener('click', () => {
+                setTimeout(() => {
+                    if (!window.lexiaPriceCalculator) {
+                        console.log('料金計算機を初期化中...');
+                        window.lexiaPriceCalculator = new LEXIAPriceCalculator(calculatorElement);
+                        window.lexiaPriceCalculator.init().catch(error => {
+                            console.error('料金計算機の初期化に失敗しました:', error);
+                            calculatorElement.innerHTML = `
+                                <div class="calculator-error">
+                                    <h3>料金計算機の読み込みに失敗しました</h3>
+                                    <p>エラー: ${error.message}</p>
+                                    <p>お手数ですが、お問い合わせフォームからご相談ください。</p>
+                                </div>
+                            `;
+                        });
+                    }
+                }, 100);
+            });
+            
+            // 料金比較タブが最初からアクティブな場合は即座に初期化
+            if (pricingTab.classList.contains('tab-btn--active')) {
+                window.lexiaPriceCalculator = new LEXIAPriceCalculator(calculatorElement);
+                window.lexiaPriceCalculator.init().catch(error => {
+                    console.error('料金計算機の初期化に失敗しました:', error);
+                    calculatorElement.innerHTML = `
+                        <div class="calculator-error">
+                            <h3>料金計算機の読み込みに失敗しました</h3>
+                            <p>エラー: ${error.message}</p>
+                            <p>お手数ですが、お問い合わせフォームからご相談ください。</p>
+                        </div>
+                    `;
+                });
+            }
+        } else {
+            // タブがない場合（他のページなど）は即座に初期化
+            window.lexiaPriceCalculator = new LEXIAPriceCalculator(calculatorElement);
+            window.lexiaPriceCalculator.init().catch(error => {
+                console.error('料金計算機の初期化に失敗しました:', error);
+                calculatorElement.innerHTML = `
+                    <div class="calculator-error">
+                        <h3>料金計算機の読み込みに失敗しました</h3>
+                        <p>エラー: ${error.message}</p>
+                        <p>お手数ですが、お問い合わせフォームからご相談ください。</p>
+                    </div>
+                `;
+            });
+        }
     }
 });
 
