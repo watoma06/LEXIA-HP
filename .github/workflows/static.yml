@@ -48,11 +48,11 @@ env:
 jobs:
   # ===================================
   # コード品質チェック & テスト
-  # ===================================
-  quality-check:
+  # ===================================  quality-check:
     name: 🔍 コード品質チェック
     runs-on: ubuntu-latest
-    steps:- name: 📦 Checkout
+    steps:
+      - name: 📦 Checkout
         uses: actions/checkout@v4
         
       - name: 🔍 HTMLバリデーション
@@ -100,8 +100,7 @@ jobs:
 
   # ===================================
   # パフォーマンス最適化
-  # ===================================
-  optimize:
+  # ===================================  optimize:
     name: ⚡ パフォーマンス最適化
     runs-on: ubuntu-latest
     needs: quality-check
@@ -116,12 +115,14 @@ jobs:
         run: |
           key="optimized-${{ hashFiles('*.html', '*.css', '*.js', 'calculator/*.js') }}"
           echo "key=$key" >> $GITHUB_OUTPUT
-
+          
       - name: 💾 最適化キャッシュ
         uses: actions/cache@v3
         with:
           path: ./optimized
-          key: ${{ steps.cache-key.outputs.key }}      - name: 🔧 Node.js セットアップ
+          key: ${{ steps.cache-key.outputs.key }}
+          
+      - name: 🔧 Node.js セットアップ
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -181,8 +182,7 @@ jobs:
             if [ "$original_css" -gt 0 ] && [ "$optimized_css" -gt 0 ]; then
               css_reduction=$(echo "scale=1; (($original_css - $optimized_css) * 100) / $original_css" | bc -l 2>/dev/null || echo "0")
               echo "| style.css | ${original_css}B | ${optimized_css}B | ${css_reduction}% |" >> $GITHUB_STEP_SUMMARY
-            fi
-          fi
+            fi          fi
           
           # JS最適化結果
           if [ -f "../script.js" ] && [ -f "script.min.js" ]; then
@@ -192,7 +192,9 @@ jobs:
               js_reduction=$(echo "scale=1; (($original_js - $optimized_js) * 100) / $original_js" | bc -l 2>/dev/null || echo "0")
               echo "| script.js | ${original_js}B | ${optimized_js}B | ${js_reduction}% |" >> $GITHUB_STEP_SUMMARY
             fi
-          fi      - name: 📤 最適化ファイルをアップロード
+          fi
+
+      - name: 📤 最適化ファイルをアップロード
         uses: actions/upload-artifact@v3
         with:
           name: optimized-site
