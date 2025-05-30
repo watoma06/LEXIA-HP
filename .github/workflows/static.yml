@@ -54,14 +54,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📦 Checkout
-        uses: actions/checkout@v4
-
-      - name: 🔍 HTMLバリデーション
+        uses: actions/checkout@v4      - name: 🔍 HTMLバリデーション
         uses: Cyb3r-Jak3/html5validator-action@v7.2.0
         with:
           root: ./
           format: text
-            - name: 📊 ファイルサイズチェック
+          
+      - name: 📊 ファイルサイズチェック
         run: |
           echo "## 📊 ファイルサイズ分析" >> $GITHUB_STEP_SUMMARY
           echo "| ファイル | サイズ | 状態 |" >> $GITHUB_STEP_SUMMARY
@@ -121,12 +120,12 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ./optimized
-          key: ${{ steps.cache-key.outputs.key }}
-
-      - name: 🔧 Node.js セットアップ
+          key: ${{ steps.cache-key.outputs.key }}      - name: 🔧 Node.js セットアップ
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}      - name: ⚡ CSS/JS最適化
+          node-version: ${{ env.NODE_VERSION }}
+          
+      - name: ⚡ CSS/JS最適化
         run: |
           # ディレクトリ作成
           mkdir -p optimized
@@ -192,14 +191,14 @@ jobs:
               js_reduction=$(echo "scale=1; (($original_js - $optimized_js) * 100) / $original_js" | bc -l 2>/dev/null || echo "0")
               echo "| script.js | ${original_js}B | ${optimized_js}B | ${js_reduction}% |" >> $GITHUB_STEP_SUMMARY
             fi
-          fi
-
-      - name: 📤 最適化ファイルをアップロード
+          fi      - name: 📤 最適化ファイルをアップロード
         uses: actions/upload-artifact@v3
         with:
           name: optimized-site
           path: ./optimized
-          retention-days: 30  # ===================================
+          retention-days: 30
+
+  # ===================================
   # セキュリティ & 品質スキャン
   # ===================================
   security:

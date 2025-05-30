@@ -1,0 +1,51 @@
+# シンプルなバックアップデプロイワークフロー
+name: 🔧 Simple Deploy (Backup)
+
+on:
+  workflow_dispatch:
+    inputs:
+      force_deploy:
+        description: '強制デプロイ'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages-backup"
+  cancel-in-progress: false
+
+jobs:
+  simple-deploy:
+    name: 🚀 シンプルデプロイ
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+        
+      - name: 🛠️ Pages設定
+        uses: actions/configure-pages@v5
+        
+      - name: 📤 アーティファクトアップロード
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+          
+      - name: 🚀 GitHub Pages デプロイ
+        id: deployment
+        uses: actions/deploy-pages@v4
+        
+      - name: ✅ デプロイ完了
+        run: |
+          echo "🎉 バックアップデプロイ完了!"
+          echo "URL: ${{ steps.deployment.outputs.page_url }}"
