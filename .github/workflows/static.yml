@@ -52,7 +52,7 @@ jobs:
   quality-check:
     name: 🔍 コード品質チェック
     runs-on: ubuntu-latest
-    steps:      - name: 📦 Checkout
+    steps:- name: 📦 Checkout
         uses: actions/checkout@v4
         
       - name: 🔍 HTMLバリデーション
